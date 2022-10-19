@@ -19,8 +19,17 @@
     </ul>
 </nav>
 <main>
-    <h2>Lista klientów</h2>
-    <p>Brak rekordów do wyświetlenia</p>
+    <h2>Strona główna</h2>
+    <form>
+        <label for="firstName">Imię: *</label>
+        <input type="text" name="firstName" id="firstName" />
+        <span id="errorFirstName"></span>
+
+        <label for="lastName">Nazwisko: *</label>
+        <input type="text" name="lastName" id="lastName" required />
+        <span id="errorLastName"></span>
+        
+    </form>
 </main>
 <footer>Patryk Leszczyński s20747</footer>
 </body>
