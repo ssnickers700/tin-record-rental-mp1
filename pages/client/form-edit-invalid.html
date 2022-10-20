@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <title>Record Rental</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+    <h1>Record Rental</h1>
+    <img src="/images/logo.png" alt="logo">
+</header>
+<nav>
+    <ul>
+        <li>Strona główna</li>
+        <li>Klienci</li>
+        <li>Płyty</li>
+        <li>Wynajmy</li>
+    </ul>
+</nav>
+<main>
+    <h2>Edycja klienta</h2>
+    <form>
+        <label for="firstName">Imię: *</label>
+        <input type="text" name="firstName" id="firstName" value="Siemowit" required />
+        <span id="errorFirstName">Pole jest wymagane</span>
+
+        <label for="lastName">Nazwisko: *</label>
+        <input type="text" name="lastName" id="lastName" value="Blanek" required />
+        <span id="errorLastName">Pole jest wymagane</span>
+
+        <label for="email">Email: *</label>
+        <input type="email" name="email" id="email" value="siema.wit@gmail.com" required />
+        <span id="errorEmail">Pole jest wymagane</span>
+
+        <label>Czy wypłacalny:</label>
+        <label for="solvencyTrue">Tak</label>
+        <input type="radio" id="solvencyTrue" name="solvency" value="true" checked/>
+        <label for="solvencyFalse">Nie</label>
+        <input type="radio" id="solvencyFalse" name="solvency" value="false" />
+
+        <div>
+            <p id="errorsSummary">Formularz zawiera błedy</p>
+            <input type="submit" value="Edytuj" />
+            <a href="list.html">Anuluj</a>
+        </div>
+    </form>
+</main>
+<footer>Patryk Leszczyński s20747</footer>
+</body>
+</html>

@@ -19,23 +19,29 @@
     </ul>
 </nav>
 <main>
-    <h2>Nowy klient</h2>
+    <h2>Edycja klienta</h2>
     <form>
         <label for="firstName">Imię: *</label>
-        <input type="text" name="firstName" id="firstName" required />
+        <input type="text" name="firstName" id="firstName" value="Siemowit" required />
         <span id="errorFirstName"></span>
 
         <label for="lastName">Nazwisko: *</label>
-        <input type="text" name="lastName" id="lastName" required />
+        <input type="text" name="lastName" id="lastName" value="Blanek" required />
         <span id="errorLastName"></span>
 
         <label for="email">Email: *</label>
-        <input type="email" name="email" id="email" required />
+        <input type="email" name="email" id="email" value="siema.wit@gmail.com" required />
         <span id="errorEmail"></span>
+
+        <label>Czy wypłacalny:</label>
+        <label for="solvencyTrue">Tak</label>
+        <input type="radio" id="solvencyTrue" name="solvency" value="true" checked/>
+        <label for="solvencyFalse">Nie</label>
+        <input type="radio" id="solvencyFalse" name="solvency" value="false" />
 
         <div>
             <p id="errorsSummary"></p>
-            <input type="submit" value="Dodaj" />
+            <input type="submit" value="Edytuj" />
             <a href="list.html">Anuluj</a>
         </div>
     </form>

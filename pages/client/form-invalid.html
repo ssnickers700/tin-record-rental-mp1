@@ -23,18 +23,18 @@
     <form>
         <label for="firstName">Imię: *</label>
         <input type="text" name="firstName" id="firstName" required />
-        <span id="errorFirstName"></span>
+        <span id="errorFirstName">Pole jest wymagane</span>
 
         <label for="lastName">Nazwisko: *</label>
         <input type="text" name="lastName" id="lastName" required />
-        <span id="errorLastName"></span>
+        <span id="errorLastName">Pole jest wymagane</span>
 
         <label for="email">Email: *</label>
         <input type="email" name="email" id="email" required />
-        <span id="errorEmail"></span>
+        <span id="errorEmail">Pole jest wymagane</span>
 
         <div>
-            <p id="errorsSummary"></p>
+            <p id="errorsSummary">Formularz zwiera błędy</p>
             <input type="submit" value="Dodaj" />
             <a href="list.html">Anuluj</a>
         </div>
