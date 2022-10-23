@@ -22,16 +22,16 @@
     <h2>Edycja klienta</h2>
     <form class="form">
         <label for="firstName">Imię: <span class="symbol-required">*</span></label>
-        <input type="text" name="firstName" id="firstName" value="Siemowit" required />
-        <span id="errorFirstName">Pole jest wymagane</span>
+        <input type="text" name="firstName" id="firstName" value="Siemowit" class="error-input" required />
+        <span id="errorFirstName" class="errors-text">Pole jest wymagane</span>
 
         <label for="lastName">Nazwisko: <span class="symbol-required">*</span></label>
-        <input type="text" name="lastName" id="lastName" value="Blanek" required />
-        <span id="errorLastName">Pole jest wymagane</span>
+        <input type="text" name="lastName" id="lastName" value="Blanek" class="error-input" required />
+        <span id="errorLastName" class="errors-text">Pole jest wymagane</span>
 
         <label for="email">Email: <span class="symbol-required">*</span></label>
-        <input type="email" name="email" id="email" value="siema.wit@gmail.com" required />
-        <span id="errorEmail">Pole jest wymagane</span>
+        <input type="email" name="email" id="email" value="siema.wit@gmail.com" class="error-input" required />
+        <span id="errorEmail" class="errors-text">Pole jest wymagane</span>
 
         <label>Czy wypłacalny:</label>
         <label for="solvencyTrue">Tak</label>
@@ -40,7 +40,7 @@
         <input type="radio" id="solvencyFalse" name="solvency" value="false" />
 
         <div class="form-buttons">
-            <p id="errorsSummary">Formularz zawiera błedy</p>
+            <p id="errorsSummary" class="errors-text">Formularz zawiera błedy</p>
             <input type="submit" value="Edytuj" class="form-button-submit-edit"/>
             <a href="list.html" class="form-button-cancel">Anuluj</a>
         </div>

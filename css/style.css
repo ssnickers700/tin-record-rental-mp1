@@ -7,6 +7,10 @@ body {
     min-width: 600px;
 }
 
+header img {
+    width: 10%;
+    height: auto;
+}
 
 header, main, footer, nav {
     margin: 1rem;
@@ -161,11 +165,20 @@ main h2 {
     width: 100%;
 }
 
+.form-button-cancel {
+    box-sizing: border-box;
+    display: block;
+}
+
+.form-button-submit-add,
+.form-button-submit-edit {
+    margin-bottom: 0.5rem;
+}
+
 .button-edit {
     display: inline-block;
     margin-top: 1rem;
     margin-bottom: 0.5rem;
-    margin-left: 2rem;
 }
 
 .list-empty-text {
@@ -224,8 +237,56 @@ select {
     margin-bottom: 0.5rem;
 }
 
+.form label[for="solvencyTrue"],
+.form label[for="solvencyFalse"] {
+    display: inline-block;
+}
+
+.form input[type="radio"] {
+    margin-right: 1rem;
+}
+
+/*.form input.error-input,
+.form select.error-input {
+    border: 3px solid #e74c3c;
+}*/
+
+/*.errors-text {
+    display: block;
+    line-height: 2.25rem;
+    margin-top: 0.5rem;
+}
+
+.symbol-required,
+.errors-text {
+    color: #c0392b;
+}*/
+
 .symbol-required {
     color: #c0392b;
+}
+
+#errorFirstName,
+#errorLastName,
+#errorEmail,
+#errorsSummary {
+    display: none;
+}
+
+#email:invalid + #errorEmail,
+#firstName:invalid + #errorFirstName,
+#lastName:invalid + #errorLastName,
+.form:invalid #errorsSummary {
+    display: block;
+    line-height: 2.25rem;
+    margin-top: 0.5rem;
+    color: #c0392b;
+}
+
+#firstName:invalid,
+#lastName:invalid,
+#email:invalid {
+    border: 3px solid #e74c3c;
 }
 
 .form-buttons {

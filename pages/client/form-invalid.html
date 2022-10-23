@@ -22,19 +22,19 @@
     <h2>Nowy klient</h2>
     <form class="form">
         <label for="firstName">Imię: <span class="symbol-required">*</span></label>
-        <input type="text" name="firstName" id="firstName" required />
-        <span id="errorFirstName">Pole jest wymagane</span>
+        <input type="text" name="firstName" id="firstName" class="error-input" required />
+        <span id="errorFirstName" class="errors-text">Pole jest wymagane</span>
 
         <label for="lastName">Nazwisko: <span class="symbol-required">*</span></label>
-        <input type="text" name="lastName" id="lastName" required />
-        <span id="errorLastName">Pole jest wymagane</span>
+        <input type="text" name="lastName" id="lastName" class="error-input" required />
+        <span id="errorLastName" class="errors-text">Pole jest wymagane</span>
 
         <label for="email">Email: <span class="symbol-required">*</span></label>
-        <input type="email" name="email" id="email" required />
-        <span id="errorEmail">Pole jest wymagane</span>
+        <input type="email" name="email" id="email" class="error-input" required />
+        <span id="errorEmail" class="errors-text" >Pole jest wymagane</span>
 
         <div class="form-buttons">
-            <p id="errorsSummary">Formularz zwiera błędy</p>
+            <p id="errorsSummary" class="errors-text">Formularz zwiera błędy</p>
             <input type="submit" value="Dodaj" class="form-button-submit-add"/>
             <a href="list.html" class="form-button-cancel">Anuluj</a>
         </div>
