@@ -20,16 +20,16 @@
 </nav>
 <main>
     <h2>Edycja klienta</h2>
-    <form>
-        <label for="firstName">Imię: *</label>
+    <form class="form">
+        <label for="firstName">Imię: <span class="symbol-required">*</span></label>
         <input type="text" name="firstName" id="firstName" value="Siemowit" required />
         <span id="errorFirstName">Pole jest wymagane</span>
 
-        <label for="lastName">Nazwisko: *</label>
+        <label for="lastName">Nazwisko: <span class="symbol-required">*</span></label>
         <input type="text" name="lastName" id="lastName" value="Blanek" required />
         <span id="errorLastName">Pole jest wymagane</span>
 
-        <label for="email">Email: *</label>
+        <label for="email">Email: <span class="symbol-required">*</span></label>
         <input type="email" name="email" id="email" value="siema.wit@gmail.com" required />
         <span id="errorEmail">Pole jest wymagane</span>
 
@@ -39,10 +39,10 @@
         <label for="solvencyFalse">Nie</label>
         <input type="radio" id="solvencyFalse" name="solvency" value="false" />
 
-        <div>
+        <div class="form-buttons">
             <p id="errorsSummary">Formularz zawiera błedy</p>
-            <input type="submit" value="Edytuj" />
-            <a href="list.html">Anuluj</a>
+            <input type="submit" value="Edytuj" class="form-button-submit-edit"/>
+            <a href="list.html" class="form-button-cancel">Anuluj</a>
         </div>
     </form>
 </main>
