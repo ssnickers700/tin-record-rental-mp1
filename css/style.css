@@ -269,14 +269,22 @@ select {
 #errorFirstName,
 #errorLastName,
 #errorEmail,
-#errorsSummary {
+#errorsSummary,
+#errorRecordName,
+#errorArtistName,
+#errorPrice,
+#errorUnit {
     display: none;
 }
 
 #email:invalid + #errorEmail,
 #firstName:invalid + #errorFirstName,
 #lastName:invalid + #errorLastName,
-.form:invalid #errorsSummary {
+.form:invalid #errorsSummary,
+#recordName:invalid + #errorRecordName,
+#artistName:invalid + #errorArtistName,
+#price:invalid + #errorPrice,
+#unit:invalid + #errorUnit {
     display: block;
     line-height: 2.25rem;
     margin-top: 0.5rem;
@@ -285,7 +293,11 @@ select {
 
 #firstName:invalid,
 #lastName:invalid,
-#email:invalid {
+#email:invalid,
+#recordName:invalid,
+#artistName:invalid,
+#price:invalid,
+#unit:invalid {
     border: 3px solid #e74c3c;
 }
 
@@ -293,6 +305,19 @@ select {
     margin-top: 2rem;
 }
 
+.popup {
+    display: none;
+    background-color: rgba(39, 174, 96, 0.8);
+    color: white;
+    margin: 1rem;
+    padding: 0.5rem 1rem;
+}
+
+#popup-delete:target,
+#popup-add:target,
+#popup-edit:target {
+    display: block;
+}
 
 footer {
     text-align: center;
