@@ -19,50 +19,34 @@
     </ul>
 </nav>
 <main>
-    <h2>Szczegóły klienta</h2>
+    <h2>Szczegóły wynajmu</h2>
     <form class="form">
-        <label for="recordName">Tytuł: <span class="symbol-required">*</span></label>
-        <input type="text" name="recordName" id="recordName" value="Bleach" class="error-input" disabled required />
-        <span id="errorRecordName" class="errors-text">Pole jest wymagane</span>
+        <label for="client">Klient: <span class="symbol-required">*</span></label>
+        <select name="client" id="client" class="error-input" required disabled>
+            <option value>Wybierz pracownika</option>
+            <option value="1" selected="selected">Siemowit Blanek</option>
+            <option value="2">Zygmunt Gara</option>
+            <option value="2">Pankracy Pika</option>
+        </select>
+        <span id="errorClient" class="errors-text">Pole jest wymagane</span>
 
-        <label for="artistName">Artysta: <span class="symbol-required">*</span></label>
-        <input type="text" name="artistName" id="artistName" value="Nirvana" class="error-input" disabled required />
-        <span id="errorArtistName" class="errors-text">Pole jest wymagane</span>
+        <label for="record">Płyta: <span class="symbol-required">*</span></label>
+        <select name="record" id="record" class="error-input" required disabled>
+            <option value>Wybierz płytę</option>
+            <option value="1" selected="selected">Bleach - Nirvana</option>
+            <option value="2">77 - Talking Heads</option>
+        </select>
+        <span id="errorRecord" class="errors-text">Pole jest wymagane</span>
 
-        <label for="price">Cena za dzień: <span class="symbol-required">*</span></label>
-        <input type="number" name="price" min="0.00" id="price" value="14.00" class="error-input" disabled required />
-        <span id="errorPrice" class="errors-text" >Pole jest wymagane</span>
+        <label for="startDate">Data od: <span class="symbol-required">*</span></label>
+        <input type="date" name="startDate" id="startDate" value="2022-09-22" class="error-input" required disabled />
+        <span id="errorStartDate" class="errors-text" >Pole jest wymagane</span>
 
-        <label for="unit">Ilość dostępnych: <span class="symbol-required">*</span></label>
-        <input type="number" name="unit" id="unit" value="8" class="error-input" disabled required />
-        <span id="errorUnit" class="errors-text" >Pole jest wymagane</span>
+        <label for="endDate">Data do:</label>
+        <input type="date" name="endDate" id="endDate" class="error-input" disabled/>
+        <span id="errorEndDate" class="errors-text" >Pole jest wymagane</span>
     </form>
     <a href="form-edit.html" class="button-edit">Edytuj</a>
-    <h2>Szczegóły wypożyczeń płyty</h2>
-    <table class="table-list">
-        <thead>
-        <tr>
-            <th>Imie</th>
-            <th>Nazwisko</th>
-            <th>Data od</th>
-            <th>Data do</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>Siemowit</td>
-            <td>Blanek</td>
-            <td>2022-09-22</td>
-            <td>2022-10-01</td>
-        </tr>
-        <tr>
-            <td>Pankracy</td>
-            <td>Pika</td>
-            <td>2022-10-22</td>
-            <td></td>
-        </tr>
-        </tbody>
-</table>
     <a href="list.html" class="button-back">Powrót</a>
 </main>
 <footer>Patryk Leszczyński s20747</footer>

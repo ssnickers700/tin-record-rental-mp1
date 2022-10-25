@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
-<div id="popup-edit" class="popup">Płyta została edytowana</div>
+<div id="popup-edit" class="popup">Wynajem został edytowany</div>
 <header>
     <h1>Record Rental</h1>
     <img src="/images/logo.png" alt="logo">
@@ -20,23 +20,32 @@
     </ul>
 </nav>
 <main>
-    <h2>Edycja klienta</h2>
+    <h2>Edycja wynajmu</h2>
     <form class="form" action="#popup-edit">
-        <label for="recordName">Tytuł: <span class="symbol-required">*</span></label>
-        <input type="text" name="recordName" id="recordName" value="Bleach" class="error-input" required />
-        <span id="errorRecordName" class="errors-text">Pole jest wymagane</span>
+        <label for="client">Klient: <span class="symbol-required">*</span></label>
+        <select name="client" id="client" class="error-input" required>
+            <option value>Wybierz pracownika</option>
+            <option value="1" selected="selected">Siemowit Blanek</option>
+            <option value="2">Zygmunt Gara</option>
+            <option value="2">Pankracy Pika</option>
+        </select>
+        <span id="errorClient" class="errors-text">Pole jest wymagane</span>
 
-        <label for="artistName">Artysta: <span class="symbol-required">*</span></label>
-        <input type="text" name="artistName" id="artistName" value="Nirvana" class="error-input" required />
-        <span id="errorArtistName" class="errors-text">Pole jest wymagane</span>
+        <label for="record">Płyta: <span class="symbol-required">*</span></label>
+        <select name="record" id="record" class="error-input" required >
+            <option value>Wybierz płytę</option>
+            <option value="1" selected="selected">Bleach - Nirvana</option>
+            <option value="2">77 - Talking Heads</option>
+        </select>
+        <span id="errorRecord" class="errors-text">Pole jest wymagane</span>
 
-        <label for="price">Cena za dzień: <span class="symbol-required">*</span></label>
-        <input type="number" name="price" min="0.00" id="price" value="14.00" class="error-input" required />
-        <span id="errorPrice" class="errors-text" >Pole jest wymagane</span>
+        <label for="startDate">Data od: <span class="symbol-required">*</span></label>
+        <input type="date" name="startDate" id="startDate" value="2022-09-22" class="error-input" required />
+        <span id="errorStartDate" class="errors-text" >Pole jest wymagane</span>
 
-        <label for="unit">Ilość dostępnych: <span class="symbol-required">*</span></label>
-        <input type="number" name="unit" id="unit" value="8" class="error-input" required />
-        <span id="errorUnit" class="errors-text" >Pole jest wymagane</span>
+        <label for="endDate">Data do:</label>
+        <input type="date" name="endDate" id="endDate" class="error-input" />
+        <span id="errorEndDate" class="errors-text" >Pole jest wymagane</span>
 
         <div class="form-buttons">
             <p id="errorsSummary" class="errors-text">Formularz zwiera błędy</p>

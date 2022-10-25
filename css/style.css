@@ -177,8 +177,9 @@ main h2 {
 
 .button-edit {
     display: inline-block;
-    margin-top: 1rem;
+    margin-top: 2rem;
     margin-bottom: 0.5rem;
+    margin-right: 0.5rem;
 }
 
 .list-empty-text {
@@ -273,7 +274,11 @@ select {
 #errorRecordName,
 #errorArtistName,
 #errorPrice,
-#errorUnit {
+#errorUnit,
+#errorClient,
+#errorRecord,
+#errorStartDate,
+#errorEndDate {
     display: none;
 }
 
@@ -284,7 +289,11 @@ select {
 #recordName:invalid + #errorRecordName,
 #artistName:invalid + #errorArtistName,
 #price:invalid + #errorPrice,
-#unit:invalid + #errorUnit {
+#unit:invalid + #errorUnit,
+#client:invalid + #errorClient,
+#record:invalid + #errorRecord,
+#startDate:invalid + #errorStartDate,
+#endDate:invalid + #errorEndDate {
     display: block;
     line-height: 2.25rem;
     margin-top: 0.5rem;
@@ -297,7 +306,11 @@ select {
 #recordName:invalid,
 #artistName:invalid,
 #price:invalid,
-#unit:invalid {
+#unit:invalid,
+#client:invalid,
+#record:invalid,
+#startDate:invalid,
+#endDate:invalid {
     border: 3px solid #e74c3c;
 }
 

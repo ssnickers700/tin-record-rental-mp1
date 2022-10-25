@@ -6,37 +6,42 @@
     <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
-<div id="popup-add" class="popup">Płyta została dodana</div>
+<div id="popup-add" class="popup">Wynajem został dodany</div>
 <header>
     <h1>Record Rental</h1>
     <img src="/images/logo.png" alt="logo">
 </header>
 <nav>
     <ul>
-        <<li><a href="../../index.html">Strona główna</a></li>
+        <li><a href="../../index.html">Strona główna</a></li>
         <li><a href="../client/list.html">Klienci</a></li>
         <li><a href="../record/list.html">Płyty</a></li>
         <li><a href="list.html" class="active">Wynajmy</a></li>
     </ul>
 </nav>
 <main>
-    <h2>Nowa płyta</h2>
+    <h2>Nowy wynajem</h2>
     <form class="form" action="#popup-add">
-        <label for="recordName">Tytuł: <span class="symbol-required">*</span></label>
-        <input type="text" name="recordName" id="recordName" class="error-input" required />
-        <span id="errorRecordName" class="errors-text">Pole jest wymagane</span>
+        <label for="client">Klient: <span class="symbol-required">*</span></label>
+        <select name="client" id="client" class="error-input" required>
+            <option value>Wybierz pracownika</option>
+            <option value="1">Siemowit Blanek</option>
+            <option value="2">Zygmunt Gara</option>
+            <option value="3">Pankracy Pika</option>
+        </select>
+        <span id="errorClient" class="errors-text">Pole jest wymagane</span>
 
-        <label for="artistName">Artysta: <span class="symbol-required">*</span></label>
-        <input type="text" name="artistName" id="artistName" class="error-input" required />
-        <span id="errorArtistName" class="errors-text">Pole jest wymagane</span>
+        <label for="record">Płyta: <span class="symbol-required">*</span></label>
+        <select name="record" id="record" class="error-input" required>
+            <option value>Wybierz płytę</option>
+            <option value="1">Bleach - Nirvana</option>
+            <option value="2">77 - Talking Heads</option>
+        </select>
+        <span id="errorRecord" class="errors-text">Pole jest wymagane</span>
 
-        <label for="price">Cena za dzień: <span class="symbol-required">*</span></label>
-        <input type="number" min="0.00" name="price" id="price" class="error-input" required />
-        <span id="errorPrice" class="errors-text" >Pole jest wymagane</span>
-
-        <label for="unit">Ilość dostępnych: <span class="symbol-required">*</span></label>
-        <input type="number" name="unit" id="unit" class="error-input" required />
-        <span id="errorUnit" class="errors-text" >Pole jest wymagane</span>
+        <label for="startDate">Data od: <span class="symbol-required">*</span></label>
+        <input type="date" name="startDate" id="startDate" class="error-input" required />
+        <span id="errorStartDate" class="errors-text" >Pole jest wymagane</span>
 
         <div class="form-buttons">
             <p id="errorsSummary" class="errors-text">Formularz zwiera błędy</p>
