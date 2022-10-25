@@ -114,7 +114,9 @@ main h2 {
 .form-button-submit-add,
 .form-button-submit-edit,
 .button-edit,
-.button-back {
+.button-back,
+.confirm-popup-yes-button,
+.confirm-popup-cancel-button {
     border: none;
     border-radius: 5px;
     color: white;
@@ -133,7 +135,7 @@ main h2 {
 }
 
 .list-actions-button-details:hover,
-.button-back {
+.button-back:hover {
     background-color: rgba(52, 152, 219, 0.8);
 }
 
@@ -144,19 +146,39 @@ main h2 {
 }
 
 .list-actions-button-edit:hover,
-.form-button-submit-edit,
-.button-edit {
+.form-button-submit-edit:hover,
+.button-edit:hover {
     background-color: rgba(241, 196, 15, 0.8);
 }
 
 .list-actions-button-delete,
-.form-button-cancel {
+.form-button-cancel,
+.confirm-popup-yes-button {
     background-color: rgba(192, 57, 43, 0.8);
 }
 
 .list-actions-button-delete:hover,
-.form-button-cancel {
+.form-button-cancel:hover,
+.confirm-popup-yes-button:hover {
     background-color: rgba(231, 76, 60, 0.8);
+}
+
+.button-add,
+.form-button-submit-add{
+    background-color: rgba(39, 174, 96, 0.8);
+}
+
+.button-add:hover,
+.form-button-submit-add:hover {
+    background-color: rgba(46, 204, 113, 0.8);
+}
+
+.confirm-popup-cancel-button {
+    background-color: #7f8c8d;
+}
+
+.confirm-popup-cancel-button:hover {
+    background-color: #94a2a4;
 }
 
 .form-button-submit-edit,
@@ -191,18 +213,10 @@ main h2 {
 .form-button-submit-add,
 .form-button-submit-edit,
 .button-edit,
-.button-back {
+.button-back,
+.confirm-popup-yes-button,
+.confirm-popup-cancel-button {
     padding: 0.5rem 1rem;
-}
-
-.button-add,
-.form-button-submit-add{
-    background-color: rgba(39, 174, 96, 0.8);
-}
-
-.button-add:hover,
-.form-button-submit-add {
-    background-color: rgba(46, 204, 113, 0.8);
 }
 
 button,
@@ -330,6 +344,32 @@ select {
 #popup-add:target,
 #popup-edit:target {
     display: block;
+}
+
+#confirm-popup-delete {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #8963fd;
+    box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+    border-radius: 1rem;
+    padding: 2rem;
+}
+
+#confirm-popup-delete:target {
+    display: block;
+}
+
+#confirm-popup-delete p{
+    margin: 0 0 2rem 0;
+    color: white;
+}
+
+#confirm-popup-delete a {
+    float: right;
+    margin-left: 1rem;
 }
 
 footer {
