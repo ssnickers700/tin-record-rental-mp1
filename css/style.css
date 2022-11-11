@@ -235,11 +235,8 @@ select {
     width: 340px;
 }
 
-.form select,
-.form input[type="text"],
-.form input[type="number"],
-.form input[type="email"],
-.form input[type="date"] {
+form select,
+form > input:not([type="radio"]) {
     border: 1px solid #7f8c8d;
     color: #2c3e50;
     border-radius: 5px;
@@ -329,7 +326,8 @@ select {
     border: 3px solid #e74c3c;
 }*/
 
-.error-input {
+form input.error-input,
+form select.error-input {
     border: 3px solid #e74c3c;
 }
 
