@@ -10,6 +10,8 @@
 <header>
     <h1>Record Rental</h1>
     <img src="../../images/logo.png" alt="logo">
+    <script type="application/javascript" src="../../js/validationRentalForm.js"></script>
+    <script type="application/javascript" src="../../js/validationCommon.js"></script>
 </header>
 <nav>
     <ul>
@@ -21,34 +23,34 @@
 </nav>
 <main>
     <h2>Edycja wynajmu</h2>
-    <form class="form" action="#popup-edit">
+    <form class="form" action="#popup-edit" novalidate onsubmit="return validateForm();">
         <label for="client">Klient: <span class="symbol-required">*</span></label>
-        <select name="client" id="client" class="error-input" required>
+        <select name="client" id="client" required>
             <option value>Wybierz klienta</option>
             <option value="1" selected="selected">Siemowit Blanek</option>
             <option value="2">Zygmunt Gara</option>
             <option value="2">Pankracy Pika</option>
         </select>
-        <span id="errorClient" class="errors-text">Pole jest wymagane</span>
+        <span id="errorClient" class="errors-text"></span>
 
         <label for="record">Płyta: <span class="symbol-required">*</span></label>
-        <select name="record" id="record" class="error-input" required >
+        <select name="record" id="record" required >
             <option value>Wybierz płytę</option>
             <option value="1" selected="selected">Bleach - Nirvana</option>
             <option value="2">77 - Talking Heads</option>
         </select>
-        <span id="errorRecord" class="errors-text">Pole jest wymagane</span>
+        <span id="errorRecord" class="errors-text"></span>
 
         <label for="startDate">Data od: <span class="symbol-required">*</span></label>
-        <input type="date" name="startDate" id="startDate" value="2022-09-22" class="error-input" required />
-        <span id="errorStartDate" class="errors-text" >Pole jest wymagane</span>
+        <input type="date" name="startDate" id="startDate" value="2022-09-22" required />
+        <span id="errorStartDate" class="errors-text" ></span>
 
         <label for="endDate">Data do:</label>
-        <input type="date" name="endDate" id="endDate" class="error-input" />
-        <span id="errorEndDate" class="errors-text" >Pole jest wymagane</span>
+        <input type="date" name="endDate" id="endDate" />
+        <span id="errorEndDate" class="errors-text" ></span>
 
         <div class="form-buttons">
-            <p id="errorsSummary" class="errors-text">Formularz zawiera błędy</p>
+            <p id="errorsSummary" class="errors-text"></p>
             <input type="submit" value="Edytuj" class="form-button-submit-edit"/>
             <a href="list.html" class="form-button-cancel">Anuluj</a>
         </div>

@@ -18,41 +18,40 @@ function validateForm() {
 
     if (!checkRequired(firstNameInput.value)) {
         valid = false;
-        firstNameInput.classList.add("error-input");
-        errorFirstName.innerText = "Pole jest wymagane";
+        firstNameInput.classList.add(errorInputClassName);
+        errorFirstName.innerText = errorRequiredText;
     } else if (!checkTextLengthRange(firstNameInput.value, 2, 60)) {
         valid = false;
-        firstNameInput.classList.add("error-input");
-        errorFirstName.innerText = "Pole powinno zawierać od 2 do 60 znaków";
+        firstNameInput.classList.add(errorInputClassName);
+        errorFirstName.innerText = getErrorLengthText(2, 60);
     }
 
     if (!checkRequired(lastNameInput.value)) {
         valid = false;
-        lastNameInput.classList.add("error-input");
-        errorLastName.innerText = "Pole jest wymagane";
+        lastNameInput.classList.add(errorInputClassName);
+        errorLastName.innerText = errorRequiredText;
     } else if (!checkTextLengthRange(lastNameInput.value, 2, 60)) {
         valid = false;
-        lastNameInput.classList.add("error-input");
-        errorLastName.innerText = "Pole powinno zawierać od 2 do 60 znaków";
+        lastNameInput.classList.add(errorInputClassName);
+        errorLastName.innerText = getErrorLengthText(2, 60);
     }
 
     if (!checkRequired(emailInput.value)) {
         valid = false;
-        emailInput.classList.add("error-input");
-        errorEmail.innerText = "Pole jest wymagane";
+        emailInput.classList.add(errorInputClassName);
+        errorEmail.innerText = errorRequiredText;
     } else if (!checkTextLengthRange(emailInput.value, 5, 60)) {
         valid = false;
-        emailInput.classList.add("error-input");
-        errorEmail.innerText = "Pole powinno zawierać od 5 do 60 znaków";
+        emailInput.classList.add(errorInputClassName);
+        errorEmail.innerText = getErrorLengthText(5, 60);
     } else if (!checkEmail(emailInput.value)) {
         valid = false;
-        emailInput.classList.add("error-input");
+        emailInput.classList.add(errorInputClassName);
         errorEmail.innerText = "Pole powinno zawierać prawidłowy adres email";
     }
 
     if (!valid) {
-        errorsSummary.innerText = "Formularz zawiera błędy";
+        errorsSummary.innerText = errorsSummaryText;
     }
-
     return valid;
 }
