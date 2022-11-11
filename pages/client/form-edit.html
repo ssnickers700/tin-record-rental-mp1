@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Record Rental</title>
     <link rel="stylesheet" href="../../css/style.css">
+    <script type="application/javascript" src="../../js/validationClientForm.js"></script>
+    <script type="application/javascript" src="../../js/validationCommon.js"></script>
 </head>
 <body>
 <div id="popup-edit" class="popup">Klient został edytowany</div>
@@ -21,18 +23,18 @@
 </nav>
 <main>
     <h2>Edycja klienta</h2>
-    <form class="form" action="#popup-edit">
+    <form class="form" action="#popup-edit" novalidate onsubmit="return validateForm();">
         <label for="firstName">Imię: <span class="symbol-required">*</span></label>
         <input type="text" name="firstName" id="firstName" value="Siemowit" required />
-        <span id="errorFirstName" class="errors-text">Pole jest wymagane</span>
+        <span id="errorFirstName" class="errors-text"></span>
 
         <label for="lastName">Nazwisko: <span class="symbol-required">*</span></label>
         <input type="text" name="lastName" id="lastName" value="Blanek" required />
-        <span id="errorLastName" class="errors-text">Pole jest wymagane</span>
+        <span id="errorLastName" class="errors-text"></span>
 
         <label for="email">Email: <span class="symbol-required">*</span></label>
         <input type="email" name="email" id="email" value="siema.wit@gmail.com" required />
-        <span id="errorEmail" class="errors-text" >Pole jest wymagane</span>
+        <span id="errorEmail" class="errors-text" ></span>
 
         <label>Czy wypłacalny: <span class="symbol-required">*</span></label>
         <label for="solvencyTrue">Tak</label>
@@ -41,7 +43,7 @@
         <input type="radio" id="solvencyFalse" name="solvency" value="false" />
 
         <div class="form-buttons">
-            <p id="errorsSummary" class="errors-text">Formularz zawiera błędy</p>
+            <p id="errorsSummary" class="errors-text"></p>
             <input type="submit" value="Edytuj" class="form-button-submit-edit"/>
             <a href="list.html" class="form-button-cancel">Anuluj</a>
         </div>

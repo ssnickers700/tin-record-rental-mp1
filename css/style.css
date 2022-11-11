@@ -25,6 +25,7 @@ header, footer {
 header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 nav {
@@ -231,7 +232,7 @@ select {
 
 .form {
     margin-left: 2rem;
-    width: 300px;
+    width: 340px;
 }
 
 .form select,
@@ -281,7 +282,7 @@ select {
     color: #c0392b;
 }
 
-#errorFirstName,
+/*#errorFirstName,
 #errorLastName,
 #errorEmail,
 #errorsSummary,
@@ -326,6 +327,17 @@ select {
 #startDate:invalid,
 #endDate:invalid {
     border: 3px solid #e74c3c;
+}*/
+
+.error-input {
+    border: 3px solid #e74c3c;
+}
+
+.errors-text {
+    display: block;
+    line-height: 2.25rem;
+    margin-top: 0.5rem;
+    color: #c0392b;
 }
 
 .form-buttons {

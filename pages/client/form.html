@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Record Rental</title>
     <link rel="stylesheet" href="../../css/style.css">
+    <script type="application/javascript" src="../../js/validationClientForm.js"></script>
+    <script type="application/javascript" src="../../js/validationCommon.js"></script>
 </head>
 <body>
 <div id="popup-add" class="popup">Klient został dodany</div>
@@ -21,21 +23,21 @@
 </nav>
 <main>
     <h2>Nowy klient</h2>
-    <form class="form" action="#popup-add">
+    <form class="form" action="#popup-add" novalidate onsubmit="return validateForm();">
         <label for="firstName">Imię: <span class="symbol-required">*</span></label>
-        <input type="text" name="firstName" id="firstName" class="error-input" required />
-        <span id="errorFirstName" class="errors-text">Pole jest wymagane</span>
+        <input type="text" name="firstName" id="firstName" required />
+        <span id="errorFirstName" class="errors-text"></span>
 
         <label for="lastName">Nazwisko: <span class="symbol-required">*</span></label>
-        <input type="text" name="lastName" id="lastName" class="error-input" required />
-        <span id="errorLastName" class="errors-text">Pole jest wymagane</span>
+        <input type="text" name="lastName" id="lastName" required />
+        <span id="errorLastName" class="errors-text"></span>
 
         <label for="email">Email: <span class="symbol-required">*</span></label>
-        <input type="email" name="email" id="email" class="error-input" required />
-        <span id="errorEmail" class="errors-text" >Pole jest wymagane</span>
+        <input type="email" name="email" id="email" required />
+        <span id="errorEmail" class="errors-text"></span>
 
         <div class="form-buttons">
-            <p id="errorsSummary" class="errors-text">Formularz zawiera błędy</p>
+            <p id="errorsSummary" class="errors-text"></p>
             <input type="submit" value="Dodaj" class="form-button-submit-add" />
             <a href="list.html" class="form-button-cancel">Anuluj</a>
         </div>
