@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Record Rental</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+    <h1>Record Rental</h1>
+    <img src="/images/logo.png" alt="logo">
+</header>
+<nav>
+    <ul>
+        <li><a href="/" class="<%= navLocation === 'main' ? 'active' : '' %>">Strona główna</a></li>
+        <li><a href="/clients" class="<%= navLocation === 'clients' ? 'active' : '' %>">Klienci</a></li>
+        <li><a href="/records" class="<%= navLocation === 'records' ? 'active' : '' %>">Płyty</a></li>
+        <li><a href="/rentals" class="<%= navLocation === 'rentals' ? 'active' : '' %>">Wynajmy</a></li>
+    </ul>
+</nav>

@@ -1,24 +1,4 @@
-<!DOCTYPE html>
-<html lang="pl-PL">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Record Rental</title>
-    <link rel="stylesheet" href="../public/css/style.css">
-</head>
-<body>
-<header>
-    <h1>Record Rental</h1>
-    <img src="../public/images/logo.png" alt="logo">
-</header>
-<nav>
-    <ul>
-        <li><a href="index.html" class="active">Strona główna</a></li>
-        <li><a href="pages/client/list.ejs">Klienci</a></li>
-        <li><a href="pages/record/list.ejs">Płyty</a></li>
-        <li><a href="pages/record/list.ejs">Wynajmy</a></li>
-    </ul>
-</nav>
+<%- include("./fragments/header.ejs") %>
 <main>
     <h2>Strona główna</h2>
     <p>Jesteśmy nie tylko wypożyczalnią płyt, oferujemy również dostęp do unikalnego doświadczenia
@@ -27,6 +7,4 @@
     która to forma zmienia interpretację dzieła muzycznego z jakim się stykamy. Tą idee staramy się
     nieść z każdym wypożyczeniem oraz mamy nadzieje, że zostanie ona po jego trwaniu.</p>
 </main>
-<footer>Patryk Leszczyński s20747</footer>
-</body>
-</html>
+<%- include("./fragments/footer.ejs") %>
