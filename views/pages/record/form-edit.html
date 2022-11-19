@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Record Rental</title>
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../../public/css/style.css">
 </head>
 <body>
-<div id="popup-add" class="popup">Płyta została dodana</div>
+<div id="popup-edit" class="popup">Płyta została edytowana</div>
 <header>
     <h1>Record Rental</h1>
-    <img src="../../images/logo.png" alt="logo">
-    <script type="application/javascript" src="../../js/validationRecordForm.js"></script>
-    <script type="application/javascript" src="../../js/validationCommon.js"></script>
+    <img src="../../../public/images/logo.png" alt="logo">
+    <script type="application/javascript" src="../../../public/js/validationRecordForm.js"></script>
+    <script type="application/javascript" src="../../../public/js/validationCommon.js"></script>
 </header>
 <nav>
     <ul>
@@ -22,27 +22,27 @@
     </ul>
 </nav>
 <main>
-    <h2>Nowa płyta</h2>
-    <form class="form" action="#popup-add" novalidate onsubmit="return validateForm();">
+    <h2>Edycja płyty</h2>
+    <form class="form" action="#popup-edit" novalidate onsubmit="return validateForm();">
         <label for="recordName">Tytuł: <span class="symbol-required">*</span></label>
-        <input type="text" name="recordName" id="recordName" required />
+        <input type="text" name="recordName" id="recordName" value="Bleach" required />
         <span id="errorRecordName" class="errors-text"></span>
 
         <label for="artistName">Artysta: <span class="symbol-required">*</span></label>
-        <input type="text" name="artistName" id="artistName" required />
+        <input type="text" name="artistName" id="artistName" value="Nirvana" required />
         <span id="errorArtistName" class="errors-text"></span>
 
         <label for="price">Cena za dzień: <span class="symbol-required">*</span></label>
-        <input type="number" min="0.00" name="price" id="price" required />
+        <input type="number" name="price" min="0.00" id="price" value="14.00" required />
         <span id="errorPrice" class="errors-text"></span>
 
         <label for="unit">Ilość dostępnych: <span class="symbol-required">*</span></label>
-        <input type="number" name="unit" id="unit" required />
+        <input type="number" name="unit" id="unit" value="8" required />
         <span id="errorUnit" class="errors-text"></span>
 
         <div class="form-buttons">
             <p id="errorsSummary" class="errors-text"></p>
-            <input type="submit" value="Dodaj" class="form-button-submit-add" />
+            <input type="submit" value="Edytuj" class="form-button-submit-edit"/>
             <a href="list.html" class="form-button-cancel">Anuluj</a>
         </div>
     </form>

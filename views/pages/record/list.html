@@ -3,43 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>Record Rental</title>
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../../public/css/style.css">
 </head>
 <body>
 <div id="confirm-popup-delete">
-    <p>Czy na pewno chcesz usunąć klienta?</p>
+    <p>Czy na pewno chcesz usunąć płytę?</p>
     <a href="#popup-delete" class="confirm-popup-yes-button">Tak</a>
     <a href="list.html" class="confirm-popup-cancel-button">Anuluj</a>
 </div>
-<div id="popup-delete" class="popup">Klient został usunięty</div>
+<div id="popup-delete" class="popup">Płyta została usunięta</div>
 <header>
     <h1>Record Rental</h1>
-    <img src="../../images/logo.png" alt="logo">
+    <img src="../../../public/images/logo.png" alt="logo">
 </header>
 <nav>
     <ul>
         <li><a href="../../index.html">Strona główna</a></li>
-        <li><a href="list.html" class="active">Klienci</a></li>
-        <li><a href="../record/list.html">Płyty</a></li>
+        <li><a href="../client/list.html">Klienci</a></li>
+        <li><a href="list.html" class="active">Płyty</a></li>
         <li><a href="../rental/list.html">Wynajmy</a></li>
     </ul>
 </nav>
 <main>
-    <h2>Lista klientów</h2>
+    <h2>Lista płyt</h2>
     <table class="table-list">
         <thead>
         <tr>
-            <th>Imię</th>
-            <th>Nazwisko</th>
-            <th>E-mail</th>
+            <th>Tytuł</th>
+            <th>Artysta</th>
+            <th>Cena za dzień</th>
+            <th>Ilość dostępnych</th>
             <th>Akcje</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td>Simeowit</td>
-            <td>Blanek</td>
-            <td>siema.wit@gmail.com</td>
+            <td>Bleach</td>
+            <td>Nirvana</td>
+            <td>14.00</td>
+            <td>8</td>
             <td>
                 <ul class="list-actions">
                     <li><a href="details.html" class="list-actions-button-details">Szczegóły</a></li>
@@ -49,9 +51,10 @@
             </td>
         </tr>
         <tr>
-            <td>Zygmunt</td>
-            <td>Gara</td>
-            <td>zigy.zig@gmail.com</td>
+            <td>77</td>
+            <td>Talking Heads</td>
+            <td>17.00</td>
+            <td>4</td>
             <td>
                 <ul class="list-actions">
                     <li><a href="details.html" class="list-actions-button-details">Szczegóły</a></li>
@@ -61,9 +64,10 @@
             </td>
         </tr>
         <tr>
-            <td>Pankracy</td>
-            <td>Pika</td>
-            <td>pan.pika@gmail.com</td>
+            <td>Born in the U.S.A.</td>
+            <td>Bruce Springsteen</td>
+            <td>15.00</td>
+            <td>9</td>
             <td>
                 <ul class="list-actions">
                     <li><a href="details.html" class="list-actions-button-details">Szczegóły</a></li>
@@ -74,7 +78,7 @@
         </tr>
         </tbody>
     </table>
-    <a href="form.html" class="button-add">Dodaj nowego klienta</a>
+    <a href="form.html" class="button-add">Dodaj nową płytę</a>
 </main>
 <footer>Patryk Leszczyński s20747</footer>
 </body>
