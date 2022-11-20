@@ -7,7 +7,7 @@ exports.showAddClientForm = (req, res, next) => {
 }
 
 exports.showEditClientForm = (req, res, next) => {
-    res.render("pages/client/edit-form", {navLocation: "clients"});
+    res.render("pages/client/form-edit", {navLocation: "clients"});
 }
 
 exports.showClientDetails = (req, res, next) => {

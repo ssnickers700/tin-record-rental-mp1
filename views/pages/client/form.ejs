@@ -1,27 +1,8 @@
-<!DOCTYPE html>
-<html lang="pl-PL">
-<head>
-    <meta charset="UTF-8">
-    <title>Record Rental</title>
-    <link rel="stylesheet" href="../../../public/css/style.css">
-    <script type="application/javascript" src="../../../public/js/validationClientForm.js"></script>
-    <script type="application/javascript" src="../../../public/js/validationCommon.js"></script>
-</head>
-<body>
+<%- include("../../fragments/header.ejs") %>
 <div id="popup-add" class="popup">Klient został dodany</div>
-<header>
-    <h1>Record Rental</h1>
-    <img src="../../../public/images/logo.png" alt="logo">
-</header>
-<nav>
-    <ul>
-        <li><a href="../../index.ejs">Strona główna</a></li>
-        <li><a href="list.ejs" class="active">Klienci</a></li>
-        <li><a href="../record/list.ejs">Płyty</a></li>
-        <li><a href="../rental/list.ejs">Wynajmy</a></li>
-    </ul>
-</nav>
 <main>
+    <script type="application/javascript" src="/js/validationClientForm.js"></script>
+    <script type="application/javascript" src="/js/validationCommon.js"></script>
     <h2>Nowy klient</h2>
     <form class="form" action="#popup-add" novalidate onsubmit="return validateForm();">
         <label for="firstName">Imię: <span class="symbol-required">*</span></label>
@@ -39,10 +20,8 @@
         <div class="form-buttons">
             <p id="errorsSummary" class="errors-text"></p>
             <input type="submit" value="Dodaj" class="form-button-submit-add" />
-            <a href="list.ejs" class="form-button-cancel">Anuluj</a>
+            <a href="/clients" class="form-button-cancel">Anuluj</a>
         </div>
     </form>
 </main>
-<footer>Patryk Leszczyński s20747</footer>
-</body>
-</html>
+<%- include("../../fragments/footer.ejs") %>

@@ -7,7 +7,7 @@ exports.showAddRecordForm = (req, res, next) => {
 }
 
 exports.showEditRecordForm = (req, res, next) => {
-    res.render("pages/record/edit-form", {navLocation: "records"});
+    res.render("pages/record/form-edit", {navLocation: "records"});
 }
 
 exports.showRecordDetails = (req, res, next) => {

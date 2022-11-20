@@ -1,28 +1,7 @@
-<!DOCTYPE html>
-<html lang="pl-PL">
-<head>
-    <meta charset="UTF-8">
-    <title>Record Rental</title>
-    <link rel="stylesheet" href="../../../public/css/style.css">
-</head>
-<body>
-<header>
-    <h1>Record Rental</h1>
-    <img src="../../../public/images/logo.png" alt="logo">
-</header>
-<nav>
-    <ul>
-        <li><a href="../../index.ejs">Strona główna</a></li>
-        <li><a href="list.ejs" class="active">Klienci</a></li>
-        <li><a href="../record/list.ejs">Płyty</a></li>
-        <li><a href="../rental/list.ejs">Wynajmy</a></li>
-    </ul>
-</nav>
+<%- include("../../fragments/header.ejs") %>
 <main>
     <h2>Lista klientów</h2>
     <p class="list-empty-text">Brak rekordów do wyświetlenia</p>
-    <a href="form.ejs" class="button-add">Dodaj nowego klienta</a>
+    <a href="/clients/add" class="button-add">Dodaj nowego klienta</a>
 </main>
-<footer>Patryk Leszczyński s20747</footer>
-</body>
-</html>
+<%- include("../../fragments/footer.ejs") %>

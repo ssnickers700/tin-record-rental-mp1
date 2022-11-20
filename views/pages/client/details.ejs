@@ -1,23 +1,4 @@
-<!DOCTYPE html>
-<html lang="pl-PL">
-<head>
-    <meta charset="UTF-8">
-    <title>Record Rental</title>
-    <link rel="stylesheet" href="../../../public/css/style.css">
-</head>
-<body>
-<header>
-    <h1>Record Rental</h1>
-    <img src="../../../public/images/logo.png" alt="logo">
-</header>
-<nav>
-    <ul>
-        <li><a href="../../index.ejs">Strona główna</a></li>
-        <li><a href="list.ejs" class="active">Klienci</a></li>
-        <li><a href="../record/list.ejs">Płyty</a></li>
-        <li><a href="../rental/list.ejs">Wynajmy</a></li>
-    </ul>
-</nav>
+<%- include("../../fragments/header.ejs") %>
 <main>
     <h2>Szczegóły klienta</h2>
     <form class="form">
@@ -36,7 +17,7 @@
         <label for="solvencyFalse">Nie</label>
         <input type="radio" id="solvencyFalse" name="solvency" value="false" disabled />
     </form>
-    <a href="form-edit.ejs" class="button-edit">Edytuj</a>
+    <a href="/clients/edit" class="button-edit">Edytuj</a>
     <h2>Szczegóły wypożyczeń klienta</h2>
     <table class="table-list">
         <thead>
@@ -62,8 +43,6 @@
         </tr>
         </tbody>
 </table>
-    <a href="list.ejs" class="button-back">Powrót</a>
+    <a href="/clients" class="button-back">Powrót</a>
 </main>
-<footer>Patryk Leszczyński s20747</footer>
-</body>
-</html>
+<%- include("../../fragments/footer.ejs") %>

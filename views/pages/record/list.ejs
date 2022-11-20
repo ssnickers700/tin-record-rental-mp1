@@ -1,29 +1,10 @@
-<!DOCTYPE html>
-<html lang="pl-PL">
-<head>
-    <meta charset="UTF-8">
-    <title>Record Rental</title>
-    <link rel="stylesheet" href="../../../public/css/style.css">
-</head>
-<body>
+<%- include("../../fragments/header.ejs") %>
 <div id="confirm-popup-delete">
     <p>Czy na pewno chcesz usunąć płytę?</p>
     <a href="#popup-delete" class="confirm-popup-yes-button">Tak</a>
     <a href="list.html" class="confirm-popup-cancel-button">Anuluj</a>
 </div>
 <div id="popup-delete" class="popup">Płyta została usunięta</div>
-<header>
-    <h1>Record Rental</h1>
-    <img src="../../../public/images/logo.png" alt="logo">
-</header>
-<nav>
-    <ul>
-        <li><a href="../../index.ejs">Strona główna</a></li>
-        <li><a href="../client/list.ejs">Klienci</a></li>
-        <li><a href="list.html" class="active">Płyty</a></li>
-        <li><a href="../rental/list.ejs">Wynajmy</a></li>
-    </ul>
-</nav>
 <main>
     <h2>Lista płyt</h2>
     <table class="table-list">
@@ -80,6 +61,4 @@
     </table>
     <a href="form.ejs" class="button-add">Dodaj nową płytę</a>
 </main>
-<footer>Patryk Leszczyński s20747</footer>
-</body>
-</html>
+<%- include("../../fragments/footer.ejs") %>

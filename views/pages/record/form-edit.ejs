@@ -1,27 +1,8 @@
-<!DOCTYPE html>
-<html lang="pl-PL">
-<head>
-    <meta charset="UTF-8">
-    <title>Record Rental</title>
-    <link rel="stylesheet" href="../../../public/css/style.css">
-</head>
-<body>
+<%- include("../../fragments/header.ejs") %>
 <div id="popup-edit" class="popup">Płyta została edytowana</div>
-<header>
-    <h1>Record Rental</h1>
-    <img src="../../../public/images/logo.png" alt="logo">
-    <script type="application/javascript" src="../../../public/js/validationRecordForm.js"></script>
-    <script type="application/javascript" src="../../../public/js/validationCommon.js"></script>
-</header>
-<nav>
-    <ul>
-        <li><a href="../../index.ejs">Strona główna</a></li>
-        <li><a href="../client/list.ejs">Klienci</a></li>
-        <li><a href="list.ejs" class="active">Płyty</a></li>
-        <li><a href="../rental/list.ejs">Wynajmy</a></li>
-    </ul>
-</nav>
 <main>
+    <script type="application/javascript" src="/js/validationRecordForm.js"></script>
+    <script type="application/javascript" src="/js/validationCommon.js"></script>
     <h2>Edycja płyty</h2>
     <form class="form" action="#popup-edit" novalidate onsubmit="return validateForm();">
         <label for="recordName">Tytuł: <span class="symbol-required">*</span></label>
@@ -47,6 +28,4 @@
         </div>
     </form>
 </main>
-<footer>Patryk Leszczyński s20747</footer>
-</body>
-</html>
+<%- include("../../fragments/footer.ejs") %>
