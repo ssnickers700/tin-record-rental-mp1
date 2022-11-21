@@ -54,7 +54,7 @@ function validateForm() {
         valid = false;
         startDateInput.classList.add(errorInputClassName);
         errorStartDate.innerText = "Data nie może być przyszła";
-    } else if (checkRequired(endDateInput.value)) {
+    } else if (document.contains(endDateInput) && checkRequired(endDateInput.value)) {
         if (!checkDate(endDateInput.value)) {
             valid = false;
             endDateInput.classList.add(errorInputClassName);
