@@ -22,7 +22,7 @@ const Client = sequelize.define("Client", {
     },
     solvency: {
         type: Sequelize.BOOLEAN,
-        allowNull: true,
+        allowNull: false,
     }
 });
 
