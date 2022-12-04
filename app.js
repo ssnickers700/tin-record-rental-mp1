@@ -9,6 +9,8 @@ const clientRouter = require("./routes/clientRoute");
 const recordRouter = require("./routes/recordRoute");
 const rentalRouter = require("./routes/rentalRoute");
 
+const sequelizeInit = require("./config/sequelize/init");
+
 const app = express();
 
 // view engine setup
@@ -20,6 +22,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+sequelizeInit()
+    .catch(err => {
+        console.log(err)
+    });
 
 app.use('/', indexRouter);
 app.use("/clients", clientRouter);

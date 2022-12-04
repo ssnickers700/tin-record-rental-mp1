@@ -39,9 +39,9 @@ module.exports = () => {
         .then(clients => {
             if (!clients || clients.length === 0) {
                 return Client.bulkCreate([
-                    {firstName: "Siemowit", lastName: "Blanek", email: "siema.wit@gmail.com", insolvency: false},
-                    {firstName: "Zygmunt", lastName: "Gara", email: "zigy.zig@gmail.com", insolvency: false},
-                    {firstName: "Pankracy", lastName: "Pika", email: "pan.pika@gmail.com", insolvency: false},
+                    {firstName: "Siemowit", lastName: "Blanek", email: "siema.wit@gmail.com", solvency: true},
+                    {firstName: "Zygmunt", lastName: "Gara", email: "zigy.zig@gmail.com", solvency: true},
+                    {firstName: "Pankracy", lastName: "Pika", email: "pan.pika@gmail.com", solvency: true},
                 ])
                     .then(() => {
                         return Client.findAll();
@@ -56,7 +56,7 @@ module.exports = () => {
         })
         .then(records => {
             if (!records || records.length === 0) {
-                Record.bulkCreate([
+                return Record.bulkCreate([
                     {recordName: "Bleach", artistName: "Nirvana", price: 14.00, unit: 8},
                     {recordName: "77", artistName: "Talking Heads", price: 17.00, unit: 4},
                     {recordName: "Born in the U.S.A.", artistName: "Bruce Springsteen", price: 15.00, unit: 9}
@@ -75,9 +75,9 @@ module.exports = () => {
         .then(rentals => {
             if (!rentals || rentals.length === 0) {
                 Rental.bulkCreate([
-                    {client_id: allClients[0], record_id: allRecords[0], startDate: "2022-09-22", endDate: "2022-10-01"},
-                    {client_id: allClients[2], record_id: allRecords[1], startDate: "2022-10-04", endDate: null},
-                    {client_id: allClients[0], record_id: allRecords[2], startDate: "2022-10-24", endDate: null}
+                    {client_id: allClients[0]._id, record_id: allRecords[0]._id, startDate: "2022-09-22", endDate: "2022-10-01"},
+                    {client_id: allClients[2]._id, record_id: allRecords[1]._id, startDate: "2022-10-04", endDate: null},
+                    {client_id: allClients[0]._id, record_id: allRecords[2]._id, startDate: "2022-10-24", endDate: null}
                 ])
                     .then(() => {
                         return Rental.findAll();
