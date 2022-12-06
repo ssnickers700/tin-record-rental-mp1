@@ -18,7 +18,7 @@ module.exports = () => {
         onDelete: "CASCADE"
     });
     Record.hasMany(Rental, {
-        as: "records",
+        as: "rentals",
         foreignKey: {name: "record_id", allowNull: false},
         constraints: true,
         onDelete: "CASCADE"
