@@ -14,7 +14,7 @@ exports.getClientById = (clientId) => {
                 as: "rentals",
                 include: [{
                     model: Record,
-                    as: "records"
+                    as: "record"
                 }]
             }]
         });
@@ -34,11 +34,18 @@ exports.updateClient = (clientId, clientData) => {
     const lastName = clientData.lastName;
     const email = clientData.email;
     const solvency = clientData.solvency;
-    return  Client.update(clientData, {where: {id: clientId}});
+    return Client.update(
+        {
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            solvency, solvency
+        },
+        {where: {id: clientId}});
 }
 
 exports.deleteClient = (clientId) => {
-    Client.destroy({
+    return Client.destroy({
         where: {_id: clientId}
     })
 }

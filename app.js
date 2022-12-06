@@ -9,6 +9,8 @@ const clientRouter = require("./routes/clientRoute");
 const recordRouter = require("./routes/recordRoute");
 const rentalRouter = require("./routes/rentalRoute");
 
+const clientApiRouter = require("./routes/api/ClientApiRoute");
+
 const sequelizeInit = require("./config/sequelize/init");
 
 const app = express();
@@ -27,6 +29,8 @@ sequelizeInit()
     .catch(err => {
         console.log(err)
     });
+
+app.use("/api/clients", clientApiRouter);
 
 app.use('/', indexRouter);
 app.use("/clients", clientRouter);

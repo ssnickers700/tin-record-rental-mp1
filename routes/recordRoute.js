@@ -5,6 +5,6 @@ const recordController = require("../controllers/recordController");
 router.get("/", recordController.showRecordList);
 router.get("/add", recordController.showAddRecordForm);
 router.get("/edit", recordController.showEditRecordForm);
-router.get("/details/:id", recordController.showRecordDetails);
+router.get("/details/:recordId", recordController.showRecordDetails);
 
 module.exports = router;
