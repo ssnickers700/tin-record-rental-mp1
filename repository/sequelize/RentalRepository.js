@@ -17,7 +17,7 @@ exports.getRentals = () => {
     });
 };
 
-exports.getRentalsById = (rentalId) => {
+exports.getRentalById = (rentalId) => {
     return Rental.findByPk(rentalId,
         {
             include: [{

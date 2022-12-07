@@ -53,7 +53,7 @@ exports.deleteClient = (req, res, next) => {
     const clientId = req.params.clientId;
     ClientRepository.deleteClient(clientId)
         .then(result => {
-            res.status(200).json({message: "Removed employee", client: result})
+            res.status(200).json({message: "Removed client", client: result})
         })
         .catch(err => {
             if (!err.statusCode) {
