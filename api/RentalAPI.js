@@ -15,7 +15,7 @@ exports.getRentalById = (req, res, next) => {
     RentalRepository.getRentalById(rentalId)
         .then(rental => {
             if (!rental) {
-                res.status(404).message(`Rental with ${rentalId} not found`);
+                res.status(404).json({message: `Rental with ${rentalId} not found`});
             } else {
                 res.status(200).json(rental);
             }

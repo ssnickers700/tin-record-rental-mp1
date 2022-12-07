@@ -15,7 +15,7 @@ exports.getRecordById = (req, res, next) => {
     RecordRepository.getRecordById(recordId)
         .then(record => {
             if (!record) {
-                res.status(404).message(`Record with ${recordId} not found`);
+                res.status(404).json({message: `Record with ${recordId} not found`});
             } else {
                 res.status(200).json(record);
             }

@@ -15,7 +15,7 @@ exports.getClientById = (req, res, next) => {
     ClientRepository.getClientById(clientId)
         .then(client => {
             if (!client) {
-                res.status(404).message(`Client with ${clientId} not found`);
+                res.status(404).json({message: `Client with ${clientId} not found`});
             } else {
                 res.status(200).json(client);
             }
