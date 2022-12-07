@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const clientApiController = require("../../api/RecordAPI");
+const recordApiController = require("../../api/RecordAPI");
 
 router.get("/", recordApiController.getRecords);
 router.get("/:recordId", recordApiController.getRecordById);
