@@ -10,6 +10,8 @@ const recordRouter = require("./routes/recordRoute");
 const rentalRouter = require("./routes/rentalRoute");
 
 const clientApiRouter = require("./routes/api/ClientApiRoute");
+const recordApiRouter = require("./routes/api/RecordApiRoute");
+const rentalApiRouter = require("./routes/api/RentalApiRoute");
 
 const sequelizeInit = require("./config/sequelize/init");
 
@@ -31,6 +33,8 @@ sequelizeInit()
     });
 
 app.use("/api/clients", clientApiRouter);
+app.use("/api/records", recordApiRouter);
+app.use("/api/rentals", rentalApiRouter);
 
 app.use('/', indexRouter);
 app.use("/clients", clientRouter);
