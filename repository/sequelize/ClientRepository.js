@@ -34,14 +34,7 @@ exports.updateClient = (clientId, clientData) => {
     const lastName = clientData.lastName;
     const email = clientData.email;
     const solvency = clientData.solvency;
-    return Client.update(
-        {
-            firstName: firstName,
-            lastName: lastName,
-            email: email,
-            solvency: solvency
-        },
-        {where: {_id: clientId}});
+    return Client.update(clientData, {where: {_id: clientId}});
 }
 
 exports.deleteClient = (clientId) => {
