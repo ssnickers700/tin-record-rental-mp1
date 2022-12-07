@@ -39,9 +39,9 @@ exports.updateClient = (clientId, clientData) => {
             firstName: firstName,
             lastName: lastName,
             email: email,
-            solvency, solvency
+            solvency: solvency
         },
-        {where: {id: clientId}});
+        {where: {_id: clientId}});
 }
 
 exports.deleteClient = (clientId) => {
