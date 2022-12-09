@@ -4,7 +4,7 @@
     <script type="application/javascript" src="/js/validationClientForm.js"></script>
     <script type="application/javascript" src="/js/validationCommon.js"></script>
     <h2><%= pageTitle %></h2>
-    <form class="form" method="GET" action="<%= formAction %>" novalidate onsubmit="return validateForm();">
+    <form class="form" method="post" action="<%= formAction %>" novalidate onsubmit="return validateForm();">
         <label for="firstName">Imię: <span class="symbol-required">*</span></label>
         <input type="text" name="firstName" id="firstName" value="<%= clientObj.firstName %>"
                <%= (formMode === "showDetails") ? "disabled" : "" %> required />
@@ -30,6 +30,8 @@
             <input type="radio" id="solvencyFalse" name="solvency" value="false"
                     <%= (formMode === "showDetails") ? "disabled" : "" %>
                     <%= clientObj.solvency ? "" : "checked" %>/>
+        <% } else { %>
+            <input type="hidden" id="solvencyTrue" name="solvency" value="true" checked/>
         <% } %>
 
         <input type="hidden" name="_id" value="<%= clientObj._id %>">
