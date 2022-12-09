@@ -3,25 +3,69 @@
 <main>
     <script type="application/javascript" src="/js/validationClientForm.js"></script>
     <script type="application/javascript" src="/js/validationCommon.js"></script>
-    <h2>Nowy klient</h2>
-    <form class="form" action="#popup-add" novalidate onsubmit="return validateForm();">
+    <h2><%= pageTitle %></h2>
+    <form class="form" method="GET" action="<%= formAction %>" novalidate onsubmit="return validateForm();">
         <label for="firstName">Imię: <span class="symbol-required">*</span></label>
-        <input type="text" name="firstName" id="firstName" required />
+        <input type="text" name="firstName" id="firstName" value="<%= clientObj.firstName %>"
+               <%= (formMode === "showDetails") ? "disabled" : "" %> required />
         <span id="errorFirstName" class="errors-text"></span>
 
         <label for="lastName">Nazwisko: <span class="symbol-required">*</span></label>
-        <input type="text" name="lastName" id="lastName" required />
+        <input type="text" name="lastName" id="lastName" value="<%= clientObj.lastName %>"
+                <%= (formMode === "showDetails") ? "disabled" : "" %> required />
         <span id="errorLastName" class="errors-text"></span>
 
         <label for="email">Email: <span class="symbol-required">*</span></label>
-        <input type="email" name="email" id="email" required />
+        <input type="email" name="email" id="email" value="<%= clientObj.email %>"
+                <%= (formMode === "showDetails") ? "disabled" : "" %> required />
         <span id="errorEmail" class="errors-text"></span>
 
+        <% if (formMode !== "createNew") { %>
+            <label>Czy wypłacalny: <span class="symbol-required">*</span></label>
+            <label for="solvencyTrue">Tak</label>
+            <input type="radio" id="solvencyTrue" name="solvency" value="true"
+                   <%= (formMode === "showDetails") ? "disabled" : "" %>
+                   <%= clientObj.solvency ? "checked" : "" %>/>
+            <label for="solvencyFalse">Nie</label>
+            <input type="radio" id="solvencyFalse" name="solvency" value="false"
+                    <%= (formMode === "showDetails") ? "disabled" : "" %>
+                    <%= clientObj.solvency ? "" : "checked" %>/>
+        <% } %>
+
+        <input type="hidden" name="_id" value="<%= clientObj._id %>">
+
+        <% if (formMode !== "showDetails") { %>
         <div class="form-buttons">
             <p id="errorsSummary" class="errors-text"></p>
-            <input type="submit" value="Dodaj" class="form-button-submit-add" />
+            <input type="submit" value="<%= btnLabel %>" class="<%= btnClass %>" />
             <a href="/clients" class="form-button-cancel">Anuluj</a>
         </div>
+        <% } %>
     </form>
+    <% if (formMode === "showDetails") { %>
+        <a href="/clients/edit/<%= clientObj._id %>" class="button-edit">Edytuj</a>
+        <h2>Szczegóły wypożyczeń klienta</h2>
+        <table class="table-list">
+            <thead>
+            <tr>
+                <th>Tytul</th>
+                <th>Artysta</th>
+                <th>Data od</th>
+                <th>Data do</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% for (let rental of clientObj.rentals ) { %>
+                <tr>
+                    <td><a href="records/details/<%= rental.record._id %>"></a><%= rental.record.recordName %></td>
+                    <td><%= rental.record.artistName %></td>
+                    <td><%= rental.startDate.toISOString().split("T")[0] %></td>
+                    <td><%= rental.endDate ? rental.endDate.toISOString().split("T")[0] : "" %></td>
+                </tr>
+            <% } %>
+            </tbody>
+        </table>
+        <a href="/clients" class="button-back">Powrót</a>
+    <% } %>
 </main>
 <%- include("../../fragments/footer.ejs") %>

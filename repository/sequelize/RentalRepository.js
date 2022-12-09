@@ -18,8 +18,7 @@ exports.getRentals = () => {
 };
 
 exports.getRentalById = (rentalId) => {
-    return Rental.findByPk(rentalId,
-        {
+    return Rental.findByPk(rentalId, {
             include: [{
                 model: Client,
                 as: "client"

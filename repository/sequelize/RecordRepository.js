@@ -7,8 +7,7 @@ exports.getRecords = () => {
 }
 
 exports.getRecordById = (recordId) => {
-    return Record.findByPk(recordId,
-        {
+    return Record.findByPk(recordId, {
             include: [{
                 model: Rental,
                 as: "rentals",

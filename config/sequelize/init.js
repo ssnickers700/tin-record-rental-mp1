@@ -40,7 +40,7 @@ module.exports = () => {
             if (!clients || clients.length === 0) {
                 return Client.bulkCreate([
                     {firstName: "Siemowit", lastName: "Blanek", email: "siema.wit@gmail.com", solvency: true},
-                    {firstName: "Zygmunt", lastName: "Gara", email: "zigy.zig@gmail.com", solvency: true},
+                    {firstName: "Zygmunt", lastName: "Gara", email: "zigy.zig@gmail.com", solvency: false},
                     {firstName: "Pankracy", lastName: "Pika", email: "pan.pika@gmail.com", solvency: true},
                 ])
                     .then(() => {
