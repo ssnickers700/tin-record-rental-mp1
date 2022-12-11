@@ -7,6 +7,14 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+<% let name %>
+<% navLocation === "clients" ? name = "Klient" :
+        navLocation === "records" ? name = "Płyta" :
+                navLocation === "rentals" ? name = "Wynajem" :
+                        name = "" %>
+<div id="popup-add" class="popup"><%= name %> został dodany</div>
+<div id="popup-edit" class="popup"><%= name %> został edytowany</div>
+<div id="popup-delete" class="popup"><%= name %> został usunięty</div>
 <header>
     <h1>Record Rental</h1>
     <img src="/images/logo.png" alt="logo">

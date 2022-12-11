@@ -162,6 +162,7 @@ main h2 {
 .form-button-cancel:hover,
 .confirm-popup-yes-button:hover {
     background-color: rgba(231, 76, 60, 0.8);
+    cursor: pointer;
 }
 
 .button-add,
@@ -368,9 +369,9 @@ form select.error-input {
     padding: 2rem;
 }
 
-#confirm-popup-delete:target {
+/*#confirm-popup-delete:target {
     display: block;
-}
+}*/
 
 #confirm-popup-delete p{
     margin: 0 0 2rem 0;

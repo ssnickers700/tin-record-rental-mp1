@@ -8,7 +8,7 @@ router.get("/edit/:clientId", clientController.showEditClientForm);
 router.get("/details/:clientId", clientController.showClientDetails);
 
 router.post("/add", clientController.addClient);
-router.post("/edit/", clientController.editClient);
+router.post("/edit", clientController.editClient);
 router.get("/delete/:clientId", clientController.deleteClient);
 
 module.exports = router;

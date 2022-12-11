@@ -53,24 +53,23 @@ exports.addClient = (req, res, next) => {
     const clientData = {...req.body}
     ClientRepository.createClient(clientData)
         .then(result => {
-            res.redirect("/clients");
+            res.redirect("/clients#popup-add");
         });
 }
 
 exports.editClient = (req, res, next) => {
-    const clientId = req.params._id;
-    console.log(clientId + "<------")
+    const clientId = req.body._id;
     const clientData = {...req.body}
     ClientRepository.updateClient(clientId, clientData)
         .then(result => {
-            res.redirect("/clients");
+            res.redirect("/clients#popup-edit");
         });
 }
 
 exports.deleteClient = (req, res, next) => {
-    const clientId = req.params._id;
+    const clientId = req.params.clientId;
     ClientRepository.deleteClient(clientId)
-        .then(result => {
-            res.redirect("/clients");
+        .then(() => {
+            res.redirect("/clients#popup-delete");
         });
 }
