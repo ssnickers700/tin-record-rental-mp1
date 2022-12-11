@@ -1,17 +1,4 @@
 <%- include("../../fragments/header.ejs") %>
-<div id="popup-delete" class="popup">Klient został usunięty</div>
-<script>
-    function showPopup(deleteId) {
-        document.getElementById("confirm-popup-delete").style.display = "block";
-        let hrefVar = "/clients/delete/" + deleteId.toString();
-        document.getElementById("confirm-popup-yes-button").setAttribute("href", hrefVar);
-    }
-</script>
-<div id="confirm-popup-delete">
-    <p>Czy na pewno chcesz usunąć klienta?</p>
-    <a href="#" class="confirm-popup-yes-button" id="confirm-popup-yes-button">Tak</a>
-    <a href="/clients" class="confirm-popup-cancel-button">Anuluj</a>
-</div>
 <main>
     <h2>Lista klientów</h2>
     <table class="table-list">

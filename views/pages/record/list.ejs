@@ -1,10 +1,4 @@
 <%- include("../../fragments/header.ejs") %>
-<div id="confirm-popup-delete">
-    <p>Czy na pewno chcesz usunąć płytę?</p>
-    <a href="#popup-delete" class="confirm-popup-yes-button">Tak</a>
-    <a href="list.html" class="confirm-popup-cancel-button">Anuluj</a>
-</div>
-<div id="popup-delete" class="popup">Płyta została usunięta</div>
 <main>
     <h2>Lista płyt</h2>
     <table class="table-list">
@@ -18,47 +12,23 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>Bleach</td>
-            <td>Nirvana</td>
-            <td>14.00</td>
-            <td>8</td>
-            <td>
-                <ul class="list-actions">
-                    <li><a href="details.ejs" class="list-actions-button-details">Szczegóły</a></li>
-                    <li><a href="form-edit.ejs" class="list-actions-button-edit">Edytuj</a></li>
-                    <li><a href="#confirm-popup-delete" class="list-actions-button-delete">Usuń</a></li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>77</td>
-            <td>Talking Heads</td>
-            <td>17.00</td>
-            <td>4</td>
-            <td>
-                <ul class="list-actions">
-                    <li><a href="details.ejs" class="list-actions-button-details">Szczegóły</a></li>
-                    <li><a href="form-edit.ejs" class="list-actions-button-edit">Edytuj</a></li>
-                    <li><a href="#confirm-popup-delete" class="list-actions-button-delete">Usuń</a></li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Born in the U.S.A.</td>
-            <td>Bruce Springsteen</td>
-            <td>15.00</td>
-            <td>9</td>
-            <td>
-                <ul class="list-actions">
-                    <li><a href="details.ejs" class="list-actions-button-details">Szczegóły</a></li>
-                    <li><a href="form-edit.ejs" class="list-actions-button-edit">Edytuj</a></li>
-                    <li><a href="#confirm-popup-delete" class="list-actions-button-delete">Usuń</a></li>
-                </ul>
-            </td>
-        </tr>
+        <% for (let record of records) { %>
+            <tr>
+                <td><%= record.recordName %></td>
+                <td><%= record.artistName %></td>
+                <td><%= record.price %></td>
+                <td><%= record.unit %></td>
+                <td>
+                    <ul class="list-actions">
+                        <li><a href="/records/details/<%= record._id %>" class="list-actions-button-details">Szczegóły</a></li>
+                        <li><a href="/records/edit/<%= record._id %>" class="list-actions-button-edit">Edytuj</a></li>
+                        <li><a onclick="return showPopup(<%= record._id %>)" class="list-actions-button-delete">Usuń</a></li>
+                    </ul>
+                </td>
+            </tr>
+        <% } %>
         </tbody>
     </table>
-    <a href="form.ejs" class="button-add">Dodaj nową płytę</a>
+    <a href="/records/add" class="button-add">Dodaj nową płytę</a>
 </main>
 <%- include("../../fragments/footer.ejs") %>

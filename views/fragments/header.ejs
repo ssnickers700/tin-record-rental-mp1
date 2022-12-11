@@ -7,14 +7,27 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<% let name %>
+<script>
+    function showPopup(deleteId) {
+        document.getElementById("confirm-popup-delete").style.display = "block";
+        let hrefVar = "/<%= navLocation %>/delete/" + deleteId.toString();
+        document.getElementById("confirm-popup-yes-button").setAttribute("href", hrefVar);
+    }
+</script>
+<% let name, inflexion %>
 <% navLocation === "clients" ? name = "Klient" :
         navLocation === "records" ? name = "Płyta" :
                 navLocation === "rentals" ? name = "Wynajem" :
                         name = "" %>
-<div id="popup-add" class="popup"><%= name %> został dodany</div>
-<div id="popup-edit" class="popup"><%= name %> został edytowany</div>
-<div id="popup-delete" class="popup"><%= name %> został usunięty</div>
+<% navLocation === "records" ? inflexion = "a" : inflexion = "y" %>
+<div id="popup-add" class="popup"><%= name %> dodan<%= inflexion %></div>
+<div id="popup-edit" class="popup"><%= name %> edytowan<%= inflexion %></div>
+<div id="popup-delete" class="popup"><%= name %> usunięt<%= inflexion %></div>
+<div id="confirm-popup-delete">
+    <p>Czy na pewno chcesz usunąć?</p>
+    <a href="#" class="confirm-popup-yes-button" id="confirm-popup-yes-button">Tak</a>
+    <a href="/<%= navLocation %>" class="confirm-popup-cancel-button">Anuluj</a>
+</div>
 <header>
     <h1>Record Rental</h1>
     <img src="/images/logo.png" alt="logo">

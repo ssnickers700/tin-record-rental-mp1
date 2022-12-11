@@ -1,5 +1,4 @@
 <%- include("../../fragments/header.ejs") %>
-<div id="popup-add" class="popup">Klient został dodany</div>
 <main>
     <script type="application/javascript" src="/js/validationClientForm.js"></script>
     <script type="application/javascript" src="/js/validationCommon.js"></script>
@@ -40,7 +39,7 @@
         <div class="form-buttons">
             <p id="errorsSummary" class="errors-text"></p>
             <input type="submit" value="<%= btnLabel %>" class="<%= btnClass %>" />
-            <a href="/clients" class="form-button-cancel">Anuluj</a>
+            <a href="/<%= navLocation %>" class="form-button-cancel">Anuluj</a>
         </div>
         <% } %>
     </form>
@@ -59,7 +58,7 @@
             <tbody>
             <% for (let rental of clientObj.rentals ) { %>
                 <tr>
-                    <td><a href="records/details/<%= rental.record._id %>"></a><%= rental.record.recordName %></td>
+                    <td><a href="/records/details/<%= rental.record._id %>"><%= rental.record.recordName %></a></td>
                     <td><%= rental.record.artistName %></td>
                     <td><%= rental.startDate.toISOString().split("T")[0] %></td>
                     <td><%= rental.endDate ? rental.endDate.toISOString().split("T")[0] : "" %></td>
@@ -67,7 +66,7 @@
             <% } %>
             </tbody>
         </table>
-        <a href="/clients" class="button-back">Powrót</a>
+        <a href="/<%= navLocation %>" class="button-back">Powrót</a>
     <% } %>
 </main>
 <%- include("../../fragments/footer.ejs") %>

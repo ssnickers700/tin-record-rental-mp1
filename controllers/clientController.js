@@ -13,7 +13,7 @@ exports.showAddClientForm = (req, res, next) => {
     res.render("pages/client/form", {
         clientObj: {},
         formMode: "createNew",
-        pageTitle: "Nowy pracownika",
+        pageTitle: "Nowy klient",
         btnLabel: "Dodaj",
         btnClass: "form-button-submit-add",
         formAction: "/clients/add",
@@ -27,7 +27,7 @@ exports.showEditClientForm = (req, res, next) => {
         res.render("pages/client/form", {
             clientObj: client,
             formMode: "edit",
-            pageTitle: "Edycja pracownika",
+            pageTitle: "Edycja klienta",
             btnLabel: "Edytuj",
             btnClass: "form-button-submit-edit",
             formAction: "/clients/edit",
@@ -42,7 +42,7 @@ exports.showClientDetails = (req, res, next) => {
         res.render("pages/client/form", {
             clientObj: client,
             formMode: "showDetails",
-            pageTitle: "Szczegóły pracownika",
+            pageTitle: "Szczegóły klienta",
             formAction: "",
             navLocation: "clients"
         });
@@ -52,7 +52,7 @@ exports.showClientDetails = (req, res, next) => {
 exports.addClient = (req, res, next) => {
     const clientData = {...req.body}
     ClientRepository.createClient(clientData)
-        .then(result => {
+        .then(() => {
             res.redirect("/clients#popup-add");
         });
 }
@@ -61,7 +61,7 @@ exports.editClient = (req, res, next) => {
     const clientId = req.body._id;
     const clientData = {...req.body}
     ClientRepository.updateClient(clientId, clientData)
-        .then(result => {
+        .then(() => {
             res.redirect("/clients#popup-edit");
         });
 }

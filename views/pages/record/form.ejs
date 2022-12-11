@@ -1,31 +1,62 @@
 <%- include("../../fragments/header.ejs") %>
-<div id="popup-add" class="popup">Płyta została dodana</div>
 <main>
     <script type="application/javascript" src="/js/validationRecordForm.js"></script>
     <script type="application/javascript" src="/js/validationCommon.js"></script>
-    <h2>Nowa płyta</h2>
-    <form class="form" action="#popup-add" novalidate onsubmit="return validateForm();">
+    <h2><%= pageTitle %></h2>
+    <form class="form" method="post" action="<%= formAction %>" novalidate onsubmit="return validateForm();">
         <label for="recordName">Tytuł: <span class="symbol-required">*</span></label>
-        <input type="text" name="recordName" id="recordName" required />
+        <input type="text" name="recordName" id="recordName" value="<%= record.recordName %>"
+                <%= (formMode === "showDetails") ? "disabled" : "" %> required />
         <span id="errorRecordName" class="errors-text"></span>
 
         <label for="artistName">Artysta: <span class="symbol-required">*</span></label>
-        <input type="text" name="artistName" id="artistName" required />
+        <input type="text" name="artistName" id="artistName" value="<%= record.artistName %>"
+                <%= (formMode === "showDetails") ? "disabled" : "" %> required />
         <span id="errorArtistName" class="errors-text"></span>
 
         <label for="price">Cena za dzień: <span class="symbol-required">*</span></label>
-        <input type="number" min="0.00" name="price" id="price" required />
+        <input type="numer" min="0.00" name="price" id="price" value="<%= record.price %>"
+                <%= (formMode === "showDetails") ? "disabled" : "" %> required />
         <span id="errorPrice" class="errors-text"></span>
 
         <label for="unit">Ilość dostępnych: <span class="symbol-required">*</span></label>
-        <input type="number" name="unit" id="unit" required />
+        <input type="numer" name="unit" id="unit" value="<%= record.unit %>"
+                <%= (formMode === "showDetails") ? "disabled" : "" %> required />
         <span id="errorUnit" class="errors-text"></span>
 
-        <div class="form-buttons">
-            <p id="errorsSummary" class="errors-text"></p>
-            <input type="submit" value="Dodaj" class="form-button-submit-add" />
-            <a href="list.ejs" class="form-button-cancel">Anuluj</a>
-        </div>
+        <input type="hidden" name="_id" value="<%= record._id %>">
+
+        <% if (formMode !== "showDetails") { %>
+            <div class="form-buttons">
+                <p id="errorsSummary" class="errors-text"></p>
+                <input type="submit" value="<%= btnLabel %>" class="<%= btnClass %>" />
+                <a href="/records" class="form-button-cancel">Anuluj</a>
+            </div>
+        <% } %>
     </form>
+    <% if (formMode === "showDetails") { %>
+        <a href="/<%= navLocation %>/edit/<%= record._id %>" class="button-edit">Edytuj</a>
+        <h2>Szczegóły wypożyczeń płyty</h2>
+        <table class="table-list">
+            <thead>
+            <tr>
+                <th>Klient</th>
+                <th>Data od</th>
+                <th>Data do</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% for (let rental of record.rentals ) { %>
+                <tr>
+                    <td><a href="/clients/details/<%= rental.client._id %>">
+                        <%= rental.client.firstName+ " " + rental.client.lastName %></a></td>
+                    <td><%= rental.startDate.toISOString().split("T")[0] %></td>
+                    <td><%= rental.endDate ? rental.endDate.toISOString().split("T")[0] : "" %></td>
+                </tr>
+            <% } %>
+            </tbody>
+        </table>
+        <a href="/<%= navLocation %>" class="button-back">Powrót</a>
+    <% } %>
 </main>
 <%- include("../../fragments/footer.ejs") %>
