@@ -33,7 +33,8 @@ exports.showEditRecordForm = (req, res, next) => {
             formAction: "/records/edit",
             navLocation: "records"
         });
-    });}
+    });
+}
 
 exports.showRecordDetails = (req, res, next) => {
     const recordId = req.params.recordId;

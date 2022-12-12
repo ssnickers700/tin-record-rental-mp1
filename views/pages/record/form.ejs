@@ -30,7 +30,7 @@
             <div class="form-buttons">
                 <p id="errorsSummary" class="errors-text"></p>
                 <input type="submit" value="<%= btnLabel %>" class="<%= btnClass %>" />
-                <a href="/records" class="form-button-cancel">Anuluj</a>
+                <a href="/<%= navLocation %>" class="form-button-cancel">Anuluj</a>
             </div>
         <% } %>
     </form>
@@ -49,7 +49,7 @@
             <% for (let rental of record.rentals ) { %>
                 <tr>
                     <td><a href="/clients/details/<%= rental.client._id %>">
-                        <%= rental.client.firstName+ " " + rental.client.lastName %></a></td>
+                        <%= rental.client.firstName + " " + rental.client.lastName %></a></td>
                     <td><%= rental.startDate.toISOString().split("T")[0] %></td>
                     <td><%= rental.endDate ? rental.endDate.toISOString().split("T")[0] : "" %></td>
                 </tr>

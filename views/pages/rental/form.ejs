@@ -1,36 +1,77 @@
 <%- include("../../fragments/header.ejs") %>
-<div id="popup-add" class="popup">Wynajem został dodany</div>
 <main>
     <script type="application/javascript" src="/js/validationRentalForm.js"></script>
     <script type="application/javascript" src="/js/validationCommon.js"></script>
-    <h2>Nowy wynajem</h2>
-    <form class="form" action="#popup-add" novalidate onsubmit="return validateForm();">
-        <label for="client">Klient: <span class="symbol-required">*</span></label>
-        <select name="client" id="client" required>
-            <option value>Wybierz klienta</option>
-            <option value="1">Siemowit Blanek</option>
-            <option value="2">Zygmunt Gara</option>
-            <option value="3">Pankracy Pika</option>
+    <h2><%= pageTitle %></h2>
+    <form class="form" method="post" action="<%= formAction %>" novalidate onsubmit="return validateForm();">
+        <label for="client_id">Klient: <span class="symbol-required">*</span></label>
+        <select name="client_id" id="client" <%= (formMode === "showDetails") ? "disabled" : "" %> required>
+            <option value selected>Wybierz klienta</option>
+            <% for (let i = 0; i < allClients.length; i++) { let client = allClients[i] %>
+            <% console.log(client._id)%>
+            <option value="<%= client._id %>" label="<%= client.firstName + " " + client.lastName %>"
+                <%= (rental._id  && rental.client._id.toString() === client._id.toString()) ? "selected" : "" %>></option>
+            <% } %>
         </select>
         <span id="errorClient" class="errors-text"></span>
 
-        <label for="record">Płyta: <span class="symbol-required">*</span></label>
-        <select name="record" id="record" required>
-            <option value>Wybierz płytę</option>
-            <option value="1">Bleach - Nirvana</option>
-            <option value="2">77 - Talking Heads</option>
+        <label for="record_id">Płyta: <span class="symbol-required">*</span></label>
+        <select name="record_id" id="record" <%= (formMode === "showDetails") ? "disabled" : "" %> required>
+            <option value selected>Wybierz płytę</option>
+            <% for (let i = 0; i < allRecords.length; i++) { let record = allRecords[i] %>
+            <option value="<%= record._id %>" label="<%= record.recordName + " " + record.artistName %>"
+                    <%= (rental._id  && rental.record._id.toString() === record._id.toString()) ? "selected" : "" %>></option>
+            <% } %>
         </select>
         <span id="errorRecord" class="errors-text"></span>
 
         <label for="startDate">Data od: <span class="symbol-required">*</span></label>
-        <input type="date" name="startDate" id="startDate" required />
+        <input type="date" name="startDate" id="startDate"
+               value="<%= rental.startDate ? rental.startDate.toISOString().split("T")[0] : "" %>"
+               <%= (formMode === "showDetails") ? "disabled" : "" %> required />
         <span id="errorStartDate" class="errors-text" ></span>
 
-        <div class="form-buttons">
-            <p id="errorsSummary" class="errors-text"></p>
-            <input type="submit" value="Dodaj" class="form-button-submit-add" />
-            <a href="list.ejs" class="form-button-cancel">Anuluj</a>
-        </div>
+        <% if (formMode !== "createNew") { %>
+        <label for="endDate">Data do:</label>
+        <input type="date" name="endDate" id="endDate"
+               value="<%= rental.endDate ? rental.endDate.toISOString().split("T")[0] : "" %>"
+               <%= (formMode === "showDetails") ? "disabled" : "" %> />
+        <span id="errorEndDate" class="errors-text" ></span>
+        <% } %>
+
+        <input type="hidden" name="_id" value="<%= rental._id %>">
+
+        <% if (formMode === "showDetails") { %>
+            <label for="price">Cena za dzień: <span class="symbol-required">*</span></label>
+            <input type="number" min="0.00" name="price" id="price"
+                   value="<%= rental.record.price %>" disabled required />
+            <span id="errorPrice" class="errors-text"></span>
+
+            <label for="email">Email klienta: <span class="symbol-required">*</span></label>
+            <input type="email" name="email" id="email"
+                   value="<%= rental.client.email %>" disabled required />
+            <span id="errorEmail" class="errors-text"></span>
+
+            <label>Czy klient wypłacalny: <span class="symbol-required">*</span></label>
+            <label for="solvencyTrue">Tak</label>
+            <input type="radio" id="solvencyTrue" name="solvency" value="true" disabled
+                    <%= rental.client.solvency ? "checked" : "" %>/>
+            <label for="solvencyFalse">Nie</label>
+            <input type="radio" id="solvencyFalse" name="solvency" value="false" disabled
+                    <%= rental.client.solvency ? "" : "checked" %>/>
+        <% } %>
+
+    <% if (formMode !== "showDetails") { %>
+            <div class="form-buttons">
+                <p id="errorsSummary" class="errors-text"></p>
+                <input type="submit" value="<%= btnLabel %>" class="<%= btnClass %>" />
+                <a href="/<%= navLocation %>" class="form-button-cancel">Anuluj</a>
+            </div>
+        <% } %>
     </form>
+    <% if (formMode === "showDetails") { %>
+        <a href="/<%= navLocation %>/edit/<%= rental._id %>" class="button-edit">Edytuj</a>
+        <a href="/<%= navLocation %>" class="button-back">Powrót</a>
+    <% } %>
 </main>
 <%- include("../../fragments/footer.ejs") %>

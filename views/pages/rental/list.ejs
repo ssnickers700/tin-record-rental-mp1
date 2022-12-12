@@ -1,57 +1,35 @@
 <%- include("../../fragments/header.ejs") %>
-<div id="confirm-popup-delete">
-    <p>Czy na pewno chcesz usunąć wynajem?</p>
-    <a href="#popup-delete" class="confirm-popup-yes-button">Tak</a>
-    <a href="list.html" class="confirm-popup-cancel-button">Anuluj</a>
-</div>
-<div id="popup-delete" class="popup">Wynajem został usunięty</div>
 <main>
     <h2>Lista wynajmów</h2>
     <table class="table-list">
         <thead>
         <tr>
-            <th>Imię</th>
-            <th>Nazwisko</th>
-            <th>Tytuł</th>
-            <th>Artysta</th>
+            <th>Klient</th>
+            <th>Płyta</th>
             <th>Data od</th>
             <th>Data do</th>
             <th>Akcje</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>Siemowit</td>
-            <td>Blanek</td>
-            <td>Bleach</td>
-            <td>Nirvana</td>
-            <td>22-09-2022</td>
-            <td>01-10-2022</td>
-            <td>
-                <ul class="list-actions">
-                    <li><a href="details.ejs" class="list-actions-button-details">Szczegóły</a></li>
-                    <li><a href="form-edit.ejs" class="list-actions-button-edit">Edytuj</a></li>
-                    <li><a href="#confirm-popup-delete" class="list-actions-button-delete">Usuń</a></li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>Pankracy</td>
-            <td>Pika</td>
-            <td>77</td>
-            <td>Talking Heads</td>
-            <td>22-10-2022</td>
-            <td></td>
-            <td>
-                <ul class="list-actions">
-                    <li><a href="details.ejs" class="list-actions-button-details">Szczegóły</a></li>
-                    <li><a href="form-edit.ejs" class="list-actions-button-edit">Edytuj</a></li>
-                    <li><a href="#confirm-popup-delete" class="list-actions-button-delete">Usuń</a></li>
-                </ul>
-            </td>
-        </tr>
+        <% for (let rental of rentals) { %>
+            <tr>
+                <td><%= rental.client.firstName + " " + rental.client.lastName %></td>
+                <td><%= rental.record.recordName + " - " + rental.record.artistName %></td>
+
+                <td><%= rental.startDate.toISOString().split("T")[0] %></td>
+                <td><%= rental.endDate ? rental.endDate.toISOString().split("T")[0] : "" %></td>
+                <td>
+                    <ul class="list-actions">
+                        <li><a href="/rentals/details/<%= rental._id %>" class="list-actions-button-details">Szczegóły</a></li>
+                        <li><a href="/rentals/edit/<%= rental._id %>" class="list-actions-button-edit">Edytuj</a></li>
+                        <li><a onclick="return showPopup(<%= rental._id %>)" class="list-actions-button-delete">Usuń</a></li>
+                    </ul>
+                </td>
+            </tr>
+        <% } %>
         </tbody>
     </table>
-    <a href="form.ejs" class="button-add">Dodaj nowy wynajem</a>
+    <a href="/rentals/add" class="button-add">Dodaj nowy wynajem</a>
 </main>
 <%- include("../../fragments/footer.ejs") %>
