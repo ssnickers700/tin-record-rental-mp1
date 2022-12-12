@@ -6,18 +6,36 @@
     <form class="form" method="post" action="<%= formAction %>" novalidate onsubmit="return validateForm();">
         <label for="firstName">Imię: <span class="symbol-required">*</span></label>
         <input type="text" name="firstName" id="firstName" value="<%= clientObj.firstName %>"
-               <%= (formMode === "showDetails") ? "disabled" : "" %> required />
-        <span id="errorFirstName" class="errors-text"></span>
+               <%= (formMode === "showDetails") ? "disabled" : "" %>
+               class ="<%= validationErrors.find(e => e.path.includes("firstName")) ? "error-input" : "" %>"
+               required />
+        <span id="errorFirstName" class="errors-text">
+            <% if (validationErrors.find(e => e.path.includes("firstName"))) { %>
+                <%= validationErrors.find(e => e.path.includes("firstName")).message %>
+            <% } %>
+        </span>
 
         <label for="lastName">Nazwisko: <span class="symbol-required">*</span></label>
         <input type="text" name="lastName" id="lastName" value="<%= clientObj.lastName %>"
-                <%= (formMode === "showDetails") ? "disabled" : "" %> required />
-        <span id="errorLastName" class="errors-text"></span>
+               <%= (formMode === "showDetails") ? "disabled" : "" %>
+               class ="<%= validationErrors.find(e => e.path.includes("lastName")) ? "error-input" : "" %>"
+               required />
+        <span id="errorLastName" class="errors-text">
+            <% if (validationErrors.find(e => e.path.includes("lastName"))) { %>
+                <%= validationErrors.find(e => e.path.includes("lastName")).message %>
+            <% } %>
+        </span>
 
         <label for="email">Email: <span class="symbol-required">*</span></label>
         <input type="email" name="email" id="email" value="<%= clientObj.email %>"
-                <%= (formMode === "showDetails") ? "disabled" : "" %> required />
-        <span id="errorEmail" class="errors-text"></span>
+               <%= (formMode === "showDetails") ? "disabled" : "" %>
+               class ="<%= validationErrors.find(e => e.path.includes("email")) ? "error-input" : "" %>"
+               required />
+        <span id="errorEmail" class="errors-text">
+            <% if (validationErrors.find(e => e.path.includes("email"))) { %>
+                <%= validationErrors.find(e => e.path.includes("email")).message %>
+            <% } %>
+        </span>
 
         <% if (formMode !== "createNew") { %>
             <label>Czy wypłacalny: <span class="symbol-required">*</span></label>
@@ -29,7 +47,12 @@
             <input type="radio" id="solvencyFalse" name="solvency" value="false"
                     <%= (formMode === "showDetails") ? "disabled" : "" %>
                     <%= clientObj.solvency ? "" : "checked" %>/>
-        <% } else { %>
+            <span id="errorSolvency" class="errors-text">
+                <% if (validationErrors.find(e => e.path.includes("solvency"))) { %>
+                    <%= validationErrors.find(e => e.path.includes("solvency")).message %>
+                <% } %>
+            </span>
+    <% } else { %>
             <input type="hidden" id="solvencyTrue" name="solvency" value="true" checked/>
         <% } %>
 

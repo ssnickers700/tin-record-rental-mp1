@@ -17,7 +17,8 @@ exports.showAddClientForm = (req, res, next) => {
         btnLabel: "Dodaj",
         btnClass: "form-button-submit-add",
         formAction: "/clients/add",
-        navLocation: "clients"
+        navLocation: "clients",
+        validationErrors: []
     });
 }
 
@@ -31,7 +32,8 @@ exports.showEditClientForm = (req, res, next) => {
             btnLabel: "Edytuj",
             btnClass: "form-button-submit-edit",
             formAction: "/clients/edit",
-            navLocation: "clients"
+            navLocation: "clients",
+            validationErrors: []
         });
     });
 }
@@ -44,7 +46,8 @@ exports.showClientDetails = (req, res, next) => {
             formMode: "showDetails",
             pageTitle: "Szczegóły klienta",
             formAction: "",
-            navLocation: "clients"
+            navLocation: "clients",
+            validationErrors: []
         });
     });
 }
@@ -54,6 +57,18 @@ exports.addClient = (req, res, next) => {
     ClientRepository.createClient(clientData)
         .then(() => {
             res.redirect("/clients#popup-add");
+        })
+        .catch(err => {
+            res.render("pages/client/form", {
+                clientObj: clientData,
+                formMode: "createNew",
+                pageTitle: "Nowy klient",
+                btnLabel: "Dodaj",
+                btnClass: "form-button-submit-add",
+                formAction: "/clients/add",
+                navLocation: "clients",
+                validationErrors: err.errors
+            });
         });
 }
 
@@ -63,6 +78,18 @@ exports.editClient = (req, res, next) => {
     ClientRepository.updateClient(clientId, clientData)
         .then(() => {
             res.redirect("/clients#popup-edit");
+        })
+        .catch(err => {
+            res.render("pages/client/form", {
+                clientObj: clientData,
+                formMode: "edit",
+                pageTitle: "Edycja klienta",
+                btnLabel: "Edytuj",
+                btnClass: "form-button-submit-edit",
+                formAction: "/clients/edit",
+                navLocation: "clients",
+                validationErrors: err.errors
+            });
         });
 }
 
