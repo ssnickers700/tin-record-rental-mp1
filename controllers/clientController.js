@@ -59,6 +59,11 @@ exports.addClient = (req, res, next) => {
             res.redirect("/clients#popup-add");
         })
         .catch(err => {
+            err.errors.forEach(e => {
+                if (e.path.includes("email") && e.type === "unique violation") {
+                    e.message = "Podany adres email jest już używany";
+                }
+            })
             res.render("pages/client/form", {
                 clientObj: clientData,
                 formMode: "createNew",
