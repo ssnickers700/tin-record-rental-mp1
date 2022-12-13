@@ -27,7 +27,8 @@ exports.showAddRentalForm = (req, res, next) => {
             btnLabel: "Dodaj",
             btnClass: "form-button-submit-add",
             formAction: "/rentals/add",
-            navLocation: "rentals"
+            navLocation: "rentals",
+            validationErrors: []
         });
     });
 }
@@ -41,6 +42,7 @@ exports.showEditRentalForm = (req, res, next) => {
         allRecords = records;
         const rentalId = req.params.rentalId;
         RentalRepository.getRentalById(rentalId).then(rental => {
+            console.log(rental)
             res.render("pages/rental/form", {
                 rental: rental,
                 formMode: "edit",
@@ -50,7 +52,8 @@ exports.showEditRentalForm = (req, res, next) => {
                 btnLabel: "Edytuj",
                 btnClass: "form-button-submit-edit",
                 formAction: "/rentals/edit",
-                navLocation: "rentals"
+                navLocation: "rentals",
+                validationErrors: []
             });
         });
     });
@@ -72,34 +75,79 @@ exports.showRentalDetails = (req, res, next) => {
                 allRecords: allRecords,
                 pageTitle: "Szczegóły wynajmu",
                 formAction: "",
-                navLocation: "rentals"
+                navLocation: "rentals",
+                validationErrors: []
             });
         });
     });
 }
 
 exports.addRental = (req, res, next) => {
-    const rentalData = {...req.body}
-    if (!rentalData.endDate) {
-        rentalData.endDate = null;
-    }
-    console.log(rentalData._id + "<--------------")
-    RentalRepository.createRental(rentalData)
-        .then(() => {
-            res.redirect("/rentals#popup-add");
-        });
+    let allClients, allRecords;
+    ClientsRepository.getClients().then(clients => {
+        allClients = clients;
+        return RecordRepository.getRecords();
+    }).then(records => {
+        allRecords = records;
+        const rentalData = {...req.body}
+        if (!rentalData.endDate) {
+            rentalData.endDate = null;
+        }
+        RentalRepository.createRental(rentalData)
+            .then(() => {
+                console.log(rentalData);
+                res.redirect("/rentals#popup-add");
+            })
+            .catch(err => {
+                console.log(rentalData);
+                res.render("pages/rental/form", {
+                    rental: rentalData,
+                    formMode: "createNew",
+                    allClients: allClients,
+                    allRecords: allRecords,
+                    pageTitle: "Nowy wynajem",
+                    btnLabel: "Dodaj",
+                    btnClass: "form-button-submit-add",
+                    formAction: "/rentals/add",
+                    navLocation: "rentals",
+                    validationErrors: err.errors
+                });
+            });
+    });
 }
 
 exports.editRental = (req, res, next) => {
-    const rentalId = req.body._id;
-    const rentalData = {...req.body}
-    if (!rentalData.endDate) {
-        rentalData.endDate = null;
-    }
-    RentalRepository.updateRental(rentalId, rentalData)
-        .then(() => {
-            res.redirect("/rentals#popup-edit");
-        });
+    let allClients, allRecords;
+    ClientsRepository.getClients().then(clients => {
+        allClients = clients;
+        return RecordRepository.getRecords();
+    }).then(records => {
+        allRecords = records;
+        const rentalId = req.body._id;
+        const rentalData = {...req.body}
+        if (!rentalData.endDate) {
+            rentalData.endDate = null;
+        }
+        RentalRepository.updateRental(rentalId, rentalData)
+            .then(() => {
+                res.redirect("/rentals#popup-edit");
+            })
+            .catch(err => {
+                console.log(rentalData)
+                res.render("pages/rental/form", {
+                    rental: rentalData,
+                    formMode: "edit",
+                    allClients: allClients,
+                    allRecords: allRecords,
+                    pageTitle: "Edycja wynajmu",
+                    btnLabel: "Edytuj",
+                    btnClass: "form-button-submit-edit",
+                    formAction: "/rentals/edit",
+                    navLocation: "rentals",
+                    validationErrors: err.errors
+                });
+            });
+    });
 }
 
 exports.deleteRental = (req, res, next) => {

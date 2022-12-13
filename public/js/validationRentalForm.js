@@ -62,7 +62,7 @@ function validateForm() {
         } else if (checkDateIfAfter(startDateInput.value, endDateInput.value)) {
             valid = false;
             endDateInput.classList.add(errorInputClassName);
-            errorEndDate.innerText = "Data do musi być późniejsza niż Data od";
+            errorEndDate.innerText = "Data do nie może być wcześniejsza niż Data od";
         }
     }
 

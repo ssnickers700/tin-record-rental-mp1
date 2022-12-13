@@ -56,7 +56,8 @@ const Record = sequelize.define("Record", {
     },
     unit: {
         type: Sequelize.INTEGER,
-        allowNull: false,validate: {
+        allowNull: false,
+        validate: {
             notEmpty: {
                 msg: "Pole jest wymagane"
             },
