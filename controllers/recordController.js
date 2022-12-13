@@ -17,7 +17,8 @@ exports.showAddRecordForm = (req, res, next) => {
         btnLabel: "Dodaj",
         btnClass: "form-button-submit-add",
         formAction: "/records/add",
-        navLocation: "records"
+        navLocation: "records",
+        validationErrors: []
     });
 }
 
@@ -31,7 +32,8 @@ exports.showEditRecordForm = (req, res, next) => {
             btnLabel: "Edytuj",
             btnClass: "form-button-submit-edit",
             formAction: "/records/edit",
-            navLocation: "records"
+            navLocation: "records",
+            validationErrors: []
         });
     });
 }
@@ -44,7 +46,8 @@ exports.showRecordDetails = (req, res, next) => {
             formMode: "showDetails",
             pageTitle: "Szczegóły płyty",
             formAction: "",
-            navLocation: "records"
+            navLocation: "records",
+            validationErrors: []
         });
     });
 }
@@ -54,6 +57,18 @@ exports.addRecord = (req, res, next) => {
     RecordRepository.createRecord(recordData)
         .then(() => {
             res.redirect("/records#popup-add");
+        })
+        .catch(err => {
+            res.render("pages/record/form", {
+                record: recordData,
+                formMode: "createNew",
+                pageTitle: "Nowa płyta",
+                btnLabel: "Dodaj",
+                btnClass: "form-button-submit-add",
+                formAction: "/records/add",
+                navLocation: "records",
+                validationErrors: err.errors
+            });
         });
 }
 
@@ -63,6 +78,18 @@ exports.editRecord = (req, res, next) => {
     RecordRepository.updateRecord(recordId, recordData)
         .then(() => {
             res.redirect("/records#popup-edit");
+        })
+        .catch(err => {
+            res.render("pages/record/form", {
+                record: recordData,
+                formMode: "edit",
+                pageTitle: "Edycja płyty",
+                btnLabel: "Edytuj",
+                btnClass: "form-button-submit-edit",
+                formAction: "/records/edit",
+                navLocation: "records",
+                validationErrors: err.errors
+            });
         });
 }
 
