@@ -52,7 +52,11 @@
 
         <% if (formMode !== "showDetails") { %>
             <div class="form-buttons">
-                <p id="errorsSummary" class="errors-text"></p>
+                <p id="errorsSummary" class="errors-text">
+                    <% if (validationErrors.length !== 0) { %>
+                        Formularz zawiera błedy
+                    <% } %>
+                </p>
                 <input type="submit" value="<%= btnLabel %>" class="<%= btnClass %>" />
                 <a href="/<%= navLocation %>" class="form-button-cancel">Anuluj</a>
             </div>

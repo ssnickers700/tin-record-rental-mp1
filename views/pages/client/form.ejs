@@ -42,11 +42,11 @@
             <label for="solvencyTrue">Tak</label>
             <input type="radio" id="solvencyTrue" name="solvency" value="true"
                    <%= (formMode === "showDetails") ? "disabled" : "" %>
-                   <%= clientObj.solvency ? "checked" : "" %>/>
+                   <%= clientObj.solvency === true || clientObj.solvency === "true" ? "checked" : "" %>/>
             <label for="solvencyFalse">Nie</label>
             <input type="radio" id="solvencyFalse" name="solvency" value="false"
                     <%= (formMode === "showDetails") ? "disabled" : "" %>
-                    <%= clientObj.solvency ? "" : "checked" %>/>
+                    <%= clientObj.solvency === true || clientObj.solvency === "true" ? "" : "checked" %>/>
             <span id="errorSolvency" class="errors-text">
                 <% if (validationErrors.find(e => e.path.includes("solvency"))) { %>
                     <%= validationErrors.find(e => e.path.includes("solvency")).message %>
@@ -60,7 +60,11 @@
 
         <% if (formMode !== "showDetails") { %>
         <div class="form-buttons">
-            <p id="errorsSummary" class="errors-text"></p>
+            <p id="errorsSummary" class="errors-text">
+                <% if (validationErrors.length !== 0) { %>
+                    Formularz zawiera błedy
+                <% } %>
+            </p>
             <input type="submit" value="<%= btnLabel %>" class="<%= btnClass %>" />
             <a href="/<%= navLocation %>" class="form-button-cancel">Anuluj</a>
         </div>

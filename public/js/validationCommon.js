@@ -52,6 +52,16 @@ function checkNumber(value) {
     return !(!value || isNaN(value));
 }
 
+function checkInteger(value) {
+    if (!checkNumber(value)) {
+        return false;
+    }
+    if (value % 1 !== 0) {
+        return false;
+    }
+    return true;
+}
+
 function checkNumberRange(value, min, max) {
     if (!value || isNaN(value)) {
         return false;

@@ -63,6 +63,10 @@ function validateForm() {
         valid = false;
         unitInput.classList.add(errorInputClassName);
         errorUnit.innerText = "Podaj wartość od 0 do 1,000,000";
+    } else if (!checkInteger(unitInput.value)) {
+        valid = false;
+        unitInput.classList.add(errorInputClassName);
+        errorUnit.innerText = "Wartość powinna być liczbą całkowitą";
     }
 
     if (!valid) {

@@ -3,7 +3,7 @@
     <script type="application/javascript" src="/js/validationRentalForm.js"></script>
     <script type="application/javascript" src="/js/validationCommon.js"></script>
     <h2><%= pageTitle %></h2>
-    <form class="form" method="post" action="<%= formAction %>" novalidate onsubmit="/*return validateForm();*/">
+    <form class="form" method="post" action="<%= formAction %>" novalidate onsubmit="return validateForm();">
         <label for="client_id">Klient: <span class="symbol-required">*</span></label>
         <select name="client_id" id="client" <%= (formMode === "showDetails") ? "disabled" : "" %>
                 class ="<%= validationErrors.find(e => e.path.includes("client_id")) ? "error-input" : "" %>"
@@ -91,7 +91,11 @@
 
     <% if (formMode !== "showDetails") { %>
             <div class="form-buttons">
-                <p id="errorsSummary" class="errors-text"></p>
+                <p id="errorsSummary" class="errors-text">
+                    <% if (validationErrors.length !== 0) { %>
+                        Formularz zawiera błedy
+                    <% } %>
+                </p>
                 <input type="submit" value="<%= btnLabel %>" class="<%= btnClass %>" />
                 <a href="/<%= navLocation %>" class="form-button-cancel">Anuluj</a>
             </div>
