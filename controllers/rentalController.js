@@ -42,7 +42,6 @@ exports.showEditRentalForm = (req, res, next) => {
         allRecords = records;
         const rentalId = req.params.rentalId;
         RentalRepository.getRentalById(rentalId).then(rental => {
-            console.log(rental)
             res.render("pages/rental/form", {
                 rental: rental,
                 formMode: "edit",
@@ -95,11 +94,9 @@ exports.addRental = (req, res, next) => {
         }
         RentalRepository.createRental(rentalData)
             .then(() => {
-                console.log(rentalData);
                 res.redirect("/rentals#popup-add");
             })
             .catch(err => {
-                console.log(rentalData);
                 res.render("pages/rental/form", {
                     rental: rentalData,
                     formMode: "createNew",
@@ -133,7 +130,6 @@ exports.editRental = (req, res, next) => {
                 res.redirect("/rentals#popup-edit");
             })
             .catch(err => {
-                console.log(rentalData)
                 res.render("pages/rental/form", {
                     rental: rentalData,
                     formMode: "edit",

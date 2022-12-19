@@ -2,7 +2,7 @@
 
 ### How to run
 
-To install packages `npm i`
+To install dependencies `npm i`
 
 For database run `docker-compose up` in /docker directory
 
