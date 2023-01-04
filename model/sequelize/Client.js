@@ -13,11 +13,11 @@ const Client = sequelize.define("Client", {
         allowNull: false,
         validate: {
             notEmpty: {
-                msg: "Pole jest wymagane",
+                msg: "notEmpty",
             },
             len: {
                 args: [2, 60],
-                msg: "Pole powinno zawierać od 2 do 60 znaków"
+                msg: "len_2_60"
             }
         }
     },
@@ -26,11 +26,11 @@ const Client = sequelize.define("Client", {
         allowNull: false,
         validate: {
             notEmpty: {
-                msg: "Pole jest wymagane",
+                msg: "notEmpty",
             },
             len: {
                 args: [2, 60],
-                msg: "Pole powinno zawierać od 2 do 60 znaków"
+                msg: "len_2_60"
             }
         }
     },
@@ -40,14 +40,14 @@ const Client = sequelize.define("Client", {
         unique: true,
         validate: {
             notEmpty: {
-                msg: "Pole jest wymagane",
+                msg: "notEmpty",
             },
             len: {
                 args: [5, 60],
-                msg: "Pole powinno zawierać od 5 do 60 znaków"
+                msg: "len_5_60"
             },
             isEmail: {
-                msg: "Pole powinno zawierać prawidłowy adres email"
+                msg: "notEmail"
             }
         }
     },
@@ -56,7 +56,7 @@ const Client = sequelize.define("Client", {
         allowNull: false,
         validate: {
             notNull: {
-                msg: "Pole jest wymagane",
+                msg: "notEmpty",
             }
         }
     }

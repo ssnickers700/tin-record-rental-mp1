@@ -13,10 +13,10 @@ const Rental = sequelize.define("Rental", {
         allowNull: false,
         validate: {
             notEmpty: {
-                msg: "Pole jest wymagane"
+                msg: "notEmpty"
             },
             isDate: {
-                msg: "Data powinna być w formacie yyyy-mm-dd"
+                msg: "dateFormat"
             },
             notAfterPresentDate(value) {
                 let dateNow = new Date(),
@@ -31,7 +31,7 @@ const Rental = sequelize.define("Rental", {
                 }
                 let nowString = [year, month, day].join('-');
                 if (new Date(value).getTime() > new Date(nowString).getTime()) {
-                    throw new Error("Data nie może być przyszła");
+                    throw new Error("futureDate");
                 }
             }
         }
@@ -41,12 +41,12 @@ const Rental = sequelize.define("Rental", {
         allowNull: true,
         validate: {
             isDate: {
-                msg: "Data powinna być w formacie yyyy-mm-dd"
+                msg: "dateFormat"
             },
             notBeforeStartDate(value) {
                 if (value) {
                     if (new Date(this.startDate).getTime() > new Date(value).getTime()) {
-                        throw new Error("Data do nie może być wcześniejsza niż Data od");
+                        throw new Error("earlyDate");
                     }
                 }
             }
@@ -57,7 +57,7 @@ const Rental = sequelize.define("Rental", {
         allowNull: false,
         validate: {
             notEmpty: {
-                msg: "Pole jest wymagane"
+                msg: "notEmpty"
             }
         }
     },
@@ -66,7 +66,7 @@ const Rental = sequelize.define("Rental", {
         allowNull: false,
         validate: {
             notEmpty: {
-                msg: "Pole jest wymagane"
+                msg: "notEmpty"
             }
         }
     }

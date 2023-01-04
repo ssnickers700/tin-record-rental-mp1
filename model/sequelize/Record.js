@@ -13,11 +13,11 @@ const Record = sequelize.define("Record", {
         allowNull: false,
         validate: {
             notEmpty: {
-                msg: "Pole jest wymagane"
+                msg: "notEmpty"
             },
             len: {
                 args: [1, 60],
-                msg: "Pole powinno zawierać od 1 do 60 znaków"
+                msg: "len_1_60"
             }
         }
     },
@@ -26,11 +26,11 @@ const Record = sequelize.define("Record", {
         allowNull: false,
         validate: {
             notEmpty: {
-                msg: "Pole jest wymagane"
+                msg: "notEmpty"
             },
             len: {
                 args: [1, 60],
-                msg: "Pole powinno zawierać od 1 do 60 znaków"
+                msg: "len_1_60"
             }
         }
     },
@@ -39,18 +39,18 @@ const Record = sequelize.define("Record", {
         allowNull: false,
         validate: {
             notEmpty: {
-                msg: "Pole jest wymagane"
+                msg: "notEmpty"
             },
             isNumeric: {
-                msg: "Wartość powinna być liczbą"
+                msg: "notNumber"
             },
             min: {
                 args: [0],
-                msg: "Podaj wartość od 0 do 1,000,000"
+                msg: "numberRange"
             },
             max: {
                 args: [1000000],
-                msg: "Podaj wartość od 0 do 1,000,000"
+                msg: "numberRange"
             }
         }
     },
@@ -59,21 +59,21 @@ const Record = sequelize.define("Record", {
         allowNull: false,
         validate: {
             notEmpty: {
-                msg: "Pole jest wymagane"
+                msg: "notEmpty"
             },
             isNumeric: {
-                msg: "Wartość powinna być liczbą"
+                msg: "notNumber"
             },
             min: {
                 args: [0],
-                msg: "Podaj wartość od 0 do 1,000,000"
+                msg: "numberRange"
             },
             max: {
                 args: [1000000],
-                msg: "Podaj wartość od 0 do 1,000,000"
+                msg: "numberRange"
             },
             isInt: {
-                msg: "Wartość powinna być liczbą całkowitą"
+                msg: "notInteger"
             }
         }
     }
