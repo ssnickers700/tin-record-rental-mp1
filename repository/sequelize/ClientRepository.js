@@ -42,3 +42,9 @@ exports.deleteClient = (clientId) => {
     })
 }
 
+exports.findByEmail = (email) => {
+    return Client.findOne({
+        where: {email: email}
+    })
+}
+

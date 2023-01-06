@@ -12,10 +12,12 @@ const rentalRouter = require("./routes/rentalRoute");
 const clientApiRouter = require("./routes/api/ClientApiRoute");
 const recordApiRouter = require("./routes/api/RecordApiRoute");
 const rentalApiRouter = require("./routes/api/RentalApiRoute");
+const authApiRouter = require("./routes/api/AuthApiRoute");
 
 const sequelizeInit = require("./config/sequelize/init");
 const cors = require("cors");
 const bodyParser = require("express");
+const session = require("express-session")
 
 const app = express();
 
@@ -31,6 +33,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cors());
 
+app.use(session({
+    secret: "my_secret_password",
+    resave: false
+}))
+
 sequelizeInit()
     .catch(err => {
         console.log(err)
@@ -39,6 +46,7 @@ sequelizeInit()
 app.use("/api/clients", clientApiRouter);
 app.use("/api/records", recordApiRouter);
 app.use("/api/rentals", rentalApiRouter);
+app.use("/api/auth", authApiRouter);
 
 app.use('/', indexRouter);
 app.use("/clients", clientRouter);

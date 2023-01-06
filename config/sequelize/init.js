@@ -4,6 +4,12 @@ const Client = require("../../model/sequelize/Client");
 const Record = require("../../model/sequelize/Record");
 const Rental = require("../../model/sequelize/Rental");
 
+const authUtil = require("../../util/authUtils");
+const passHash1 = authUtil.hashPassword("12345");
+const passHash2 = authUtil.hashPassword("54321");
+const passHash3 = authUtil.hashPassword("11111");
+
+
 module.exports = () => {
     Client.hasMany(Rental, {
         as: "rentals",
@@ -39,9 +45,9 @@ module.exports = () => {
         .then(clients => {
             if (!clients || clients.length === 0) {
                 return Client.bulkCreate([
-                    {firstName: "Siemowit", lastName: "Blanek", email: "siema.wit@gmail.com", solvency: true},
-                    {firstName: "Zygmunt", lastName: "Gara", email: "zigy.zig@gmail.com", solvency: false},
-                    {firstName: "Pankracy", lastName: "Pika", email: "pan.pika@gmail.com", solvency: true},
+                    {firstName: "Siemowit", lastName: "Blanek", email: "siema.wit@gmail.com", solvency: true, password: passHash1},
+                    {firstName: "Zygmunt", lastName: "Gara", email: "zigy.zig@gmail.com", solvency: false, password: passHash2},
+                    {firstName: "Pankracy", lastName: "Pika", email: "pan.pika@gmail.com", solvency: true, password: passHash3},
                 ])
                     .then(() => {
                         return Client.findAll();
