@@ -1,4 +1,5 @@
 const ClientRepository = require("../repository/sequelize/ClientRepository");
+const authUtil = require("../util/authUtils");
 
 exports.getClients = (req, res, next) => {
     ClientRepository.getClients()
@@ -23,6 +24,7 @@ exports.getClientById = (req, res, next) => {
 };
 
 exports.createClient = (req, res, next) => {
+    req.body.password = authUtil.hashPassword(req.body.password);
     ClientRepository.createClient(req.body)
         .then(newObj => {
             res.status(201).json(newObj);
@@ -37,6 +39,12 @@ exports.createClient = (req, res, next) => {
 
 exports.updateClient = (req, res, next) => {
     const clientId = req.params.clientId;
+    const hashPattern = /^\$2[aby]?\$\d{1,2}\$[.\/A-Za-z0-9]{53}$/
+    if (hashPattern.test(req.body.password)) {
+        delete req.body.password;
+    } else {
+        req.body.password = authUtil.hashPassword(req.body.password);
+    }
     ClientRepository.updateClient(clientId, req.body)
         .then(result => {
             res.status(200).json({message: "Client updated", client: result});

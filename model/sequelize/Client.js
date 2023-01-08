@@ -62,7 +62,10 @@ const Client = sequelize.define("Client", {
     },
     password: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            notEmpty: "notEmpty"
+        }
     }
 });
 

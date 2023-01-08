@@ -24,6 +24,7 @@ exports.createClient = (newClientData) => {
         firstName: newClientData.firstName,
         lastName: newClientData.lastName,
         email: newClientData.email,
+        password: newClientData.password,
         solvency: newClientData.solvency
     });
 }
