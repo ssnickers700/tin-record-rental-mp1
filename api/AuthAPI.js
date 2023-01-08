@@ -10,13 +10,13 @@ exports.login = (req, res) => {
     ClientRepository.findByEmail(email)
         .then(user => {
             if (!user) {
-                return res.status(401).send({message: "Nieprawidłowy adres email lub hasło"});
+                return res.status(401).send({message: "notAuth"});
             }
 
             bcrypt.compare(password, user.password)
                 .then(isEqual => {
                     if (!isEqual) {
-                        return res.status(401).send({message: "Nieprawidłowy adres email lub hasło"});
+                        return res.status(401).send({message: "notAuth"});
                     }
                     const token = jwt.sign({
                             email: user.email,
